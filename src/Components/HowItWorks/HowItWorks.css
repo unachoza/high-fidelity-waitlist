@@ -1,0 +1,51 @@
+.how-it-works {
+	padding: 9rem 2rem;
+	background: var(--stone);
+}
+
+.how-it-works__container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.how-it-works__grid {
+	display: grid;
+	grid-template-columns: repeat(
+		3,
+		1fr
+	);
+
+	gap: 3rem;
+}
+
+.step-card__num {
+	font-family:
+		"Cormorant Garamond",
+		serif;
+
+	font-size: 5rem;
+	color: var(--num-color);
+}
+
+.step-card h3 {
+	font-family:
+		"Cormorant Garamond",
+		serif;
+
+	font-size: 2rem;
+	font-weight: 400;
+
+	margin-bottom: 1rem;
+}
+
+.step-card__line {
+	width: 30px;
+	height: 1px;
+	background: var(--gold);
+
+	margin-bottom: 1rem;
+}
+
+.step-card p {
+	line-height: 1.8;
+}

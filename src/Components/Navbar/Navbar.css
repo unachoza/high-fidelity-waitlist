@@ -1,0 +1,79 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	height: 68px;
+
+	z-index: 100;
+
+	transition: all 0.3s ease;
+}
+
+.navbar--scrolled {
+	backdrop-filter: blur(16px);
+	background: var(--bg);
+	border-bottom: 1px solid var(--border);
+}
+
+.navbar__container {
+	max-width: 1240px;
+	margin: 0 auto;
+
+	height: 100%;
+
+	padding: 0 2rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar__brand {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.navbar__logo {
+	height: 34px;
+	width: auto;
+}
+
+.navbar__title {
+	font-family: "Cormorant Garamond", serif;
+	font-size: 1rem;
+	letter-spacing: 0.05em;
+}
+
+.navbar__theme-toggle {
+	display: flex;
+	gap: 0.25rem;
+	padding: 0.25rem;
+	border-radius: 999px;
+	background: var(--stone);
+}
+
+.navbar__theme-toggle button {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	padding: 0.4rem 1rem;
+	border-radius: 999px;
+}
+
+.navbar__theme-toggle .active {
+	background: var(--dark);
+	color: var(--dark-fg);
+}
+
+.navbar__cta {
+	border: none;
+	cursor: pointer;
+	background: var(--gold);
+
+	padding: 0.75rem 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}

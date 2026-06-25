@@ -1,0 +1,105 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 68px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.hero-container {
+  max-width: 1240px;
+  width: 100%;
+
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+
+  align-items: center;
+  flex: 1;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.hero-label-line {
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero-label span {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 420px;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+  opacity: 0.4;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: currentColor;
+  margin-bottom: 8px;
+}
+
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+}

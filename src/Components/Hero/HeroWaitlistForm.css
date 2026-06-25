@@ -1,0 +1,43 @@
+.hero-form {
+  max-width: 420px;
+}
+
+.hero-form-row {
+  display: flex;
+}
+
+.hero-form input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+}
+
+.hero-form button {
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-form-caption {
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: .6;
+}
+
+.hero-success {
+  padding: 1.5rem;
+  border: 1px solid currentColor;
+  max-width: 420px;
+}
+
+.hero-success h3 {
+  margin-bottom: .5rem;
+}
+
+@media (max-width: 640px) {
+  .hero-form-row {
+    flex-direction: column;
+  }
+}

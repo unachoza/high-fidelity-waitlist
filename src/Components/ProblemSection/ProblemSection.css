@@ -1,0 +1,62 @@
+.problem-section {
+	padding: 9rem 2rem;
+	background: var(--bg);
+}
+
+.problem-section__container {
+	max-width: 1080px;
+	margin: 0 auto;
+
+	display: flex;
+	gap: 5rem;
+}
+
+.problem-section__label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.problem-section__line {
+	width: 1px;
+	height: 72px;
+	background: var(--border);
+}
+
+.problem-section__label span {
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+}
+
+.problem-section blockquote {
+	font-family:
+		"Cormorant Garamond",
+		serif;
+
+	font-size: clamp(
+		2.5rem,
+		5vw,
+		4rem
+	);
+
+	font-weight: 300;
+
+	line-height: 1.2;
+
+	margin-bottom: 2rem;
+}
+
+.problem-section__content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+}
+
+.problem-section__content p {
+	line-height: 1.8;
+}

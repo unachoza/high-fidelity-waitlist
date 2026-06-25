@@ -1,0 +1,59 @@
+.product-preview {
+  padding: 9rem 2rem;
+}
+
+.product-preview-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-preview-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.product-preview-header h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
+}
+
+.product-preview-hero {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.product-preview-hero img {
+  width: 100%;
+  display: block;
+}
+
+.product-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.preview-card {
+  text-align: center;
+}
+
+.preview-card img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.preview-card p {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .product-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
