@@ -36,9 +36,7 @@ const WaitlistSection = () => {
 			await submitWaitlist(email.trim(), phone.trim());
 			setStage("success");
 		} catch {
-			setSubmitError(
-				"Something went wrong. Please check your connection and try again.",
-			);
+			setSubmitError("Something went wrong. Please check your connection and try again.");
 		} finally {
 			setLoading(false);
 		}
@@ -68,16 +66,9 @@ const WaitlistSection = () => {
 
 					{stage === "form" && (
 						<>
-							<p>
-								Join the waitlist for early access to Nothing To
-								Wear.
-							</p>
+							<p>Join the waitlist for early access to Nothing To Wear.</p>
 
-							<form
-								className="waitlist__form"
-								onSubmit={handleSubmit}
-								noValidate
-							>
+							<form className="waitlist__form" onSubmit={handleSubmit} noValidate>
 								<div className="waitlist__field">
 									<label htmlFor="waitlist-email">Email</label>
 									<input
@@ -90,15 +81,9 @@ const WaitlistSection = () => {
 										}}
 										placeholder="your@email.com"
 										autoComplete="email"
-										className={
-											emailError ? "input-error" : ""
-										}
+										className={emailError ? "input-error" : ""}
 									/>
-									{emailError && (
-										<span className="waitlist__error">
-											{emailError}
-										</span>
-									)}
+									{emailError && <span className="waitlist__error">{emailError}</span>}
 								</div>
 
 								<div className="waitlist__field">
@@ -115,36 +100,18 @@ const WaitlistSection = () => {
 										}}
 										placeholder="(555) 000-0000"
 										autoComplete="tel"
-										className={
-											phoneError ? "input-error" : ""
-										}
+										className={phoneError ? "input-error" : ""}
 									/>
-									{phoneError && (
-										<span className="waitlist__error">
-											{phoneError}
-										</span>
-									)}
+									{phoneError && <span className="waitlist__error">{phoneError}</span>}
 								</div>
 
-								<button
-									type="submit"
-									className={`waitlist__submit ${
-										loading ? "loading" : ""
-									}`}
-									disabled={loading}
-								>
+								<button type="submit" className={`waitlist__submit ${loading ? "loading" : ""}`} disabled={loading}>
 									{loading ? "Reserving…" : "Reserve My Spot"}
 								</button>
 
-								{submitError && (
-									<span className="waitlist__error waitlist__error--submit">
-										{submitError}
-									</span>
-								)}
+								{submitError && <span className="waitlist__error waitlist__error--submit">{submitError}</span>}
 
-								<p className="waitlist__note">
-									No spam. Unsubscribe anytime.
-								</p>
+								<p className="waitlist__note">No spam. Unsubscribe anytime.</p>
 							</form>
 						</>
 					)}
@@ -153,25 +120,18 @@ const WaitlistSection = () => {
 						<div className="waitlist__success">
 							<h3>You're on the list.</h3>
 							<p>
-								Congrats on joining the waitlist for Nothing To
-								Wear. You'll be emailed as soon as we're ready for
+								Congrats on joining the waitlist for Nothing To Wear. You'll be emailed as soon as we're ready for
 								you.
 							</p>
 
-							<Survey
-								onSubmit={handleSurveySubmit}
-								onSkip={() => setStage("survey-done")}
-							/>
+							<Survey onSubmit={handleSurveySubmit} onSkip={() => setStage("survey-done")} />
 						</div>
 					)}
 
 					{stage === "survey-done" && (
 						<div className="waitlist__success">
 							<h3>You're on the list.</h3>
-							<p>
-								Thank you — we'll be in touch as soon as early
-								access opens.
-							</p>
+							<p>Thank you — we'll be in touch as soon as early access opens.</p>
 						</div>
 					)}
 				</div>

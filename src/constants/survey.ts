@@ -37,6 +37,22 @@ export const ITEM_COUNT_OPTIONS = [
 ];
 
 // TODO: fill in once the survey questions exist on a Google Form.
+
+export const WAITLIST_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
+
 export const SURVEY_ENTRY_FRUSTRATION = "entry.1512875088";
 export const SURVEY_ENTRY_USEFUL = "entry.64709087";
 export const SURVEY_ENTRY_COUNT = "entry.1877331144";
+
+export async function submitSurvey(frustration: string, mostUseful: string, itemCount: string): Promise<void> {
+	const body = new FormData();
+	body.append(SURVEY_ENTRY_FRUSTRATION, frustration);
+	body.append(SURVEY_ENTRY_USEFUL, mostUseful);
+	body.append(SURVEY_ENTRY_COUNT, itemCount);
+
+	await fetch(WAITLIST_FORM_ACTION, {
+		method: "POST",
+		mode: "no-cors",
+		body,
+	});
+}
