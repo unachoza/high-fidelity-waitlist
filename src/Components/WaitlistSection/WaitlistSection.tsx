@@ -5,7 +5,6 @@ import Survey from "./Survey";
 
 import { submitWaitlist } from "../../constants/waitlist";
 import { validateEmail, validatePhone } from "../../utils/validation";
-import type { SurveyResponse } from "../../constants/survey";
 
 import "./WaitlistSection.css";
 
@@ -40,12 +39,6 @@ const WaitlistSection = () => {
 		} finally {
 			setLoading(false);
 		}
-	};
-
-	const handleSurveySubmit = (_response: SurveyResponse) => {
-		// TODO: persist `_response` once survey questions exist on a Google Form
-		// (see constants/survey.ts). For now we acknowledge the submission.
-		setStage("survey-done");
 	};
 
 	return (
@@ -124,7 +117,12 @@ const WaitlistSection = () => {
 								you.
 							</p>
 
-							<Survey onSubmit={handleSurveySubmit} onSkip={() => setStage("survey-done")} />
+							<Survey
+								email={email}
+								phone={phone}
+								onDone={() => setStage("survey-done")}
+								onSkip={() => setStage("survey-done")}
+							/>
 						</div>
 					)}
 
