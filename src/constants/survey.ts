@@ -37,6 +37,6 @@ export const ITEM_COUNT_OPTIONS = [
 ];
 
 // TODO: fill in once the survey questions exist on a Google Form.
-export const SURVEY_ENTRY_FRUSTRATION = "";
-export const SURVEY_ENTRY_USEFUL = "";
-export const SURVEY_ENTRY_COUNT = "";
+export const SURVEY_ENTRY_FRUSTRATION = "entry.1512875088";
+export const SURVEY_ENTRY_USEFUL = "entry.64709087";
+export const SURVEY_ENTRY_COUNT = "entry.1877331144";
