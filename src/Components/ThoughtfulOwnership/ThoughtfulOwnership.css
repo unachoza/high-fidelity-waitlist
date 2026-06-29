@@ -68,6 +68,10 @@
 	margin-bottom: 3rem;
 }
 
+.preview-card p {
+	margin-bottom: 1rem;
+}
+
 .ownership__stats {
 	display: flex;
 	gap: 3rem;

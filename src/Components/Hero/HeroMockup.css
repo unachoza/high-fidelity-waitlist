@@ -3,6 +3,81 @@
 }
 
 .hero-browser {
+  background: #0a1422;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* floating glass cards */
+.hero-float {
+  position: absolute;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  z-index: 3;
+}
+
+.hero-float--stats {
+  top: 174px;
+  right: -22px;
+  text-align: center;
+}
+
+.hero-float--care {
+  bottom: 28px;
+  left: -22px;
+}
+
+.hero-float__label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-float__label--heading {
+  margin-bottom: 0.75rem;
+}
+
+.hero-float__value {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.hero-float__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.hero-float__status:last-child {
+  margin-bottom: 0;
+}
+
+.hero-float__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--stone-mid);
+}
+
+.hero-float__dot--ready {
+  background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .hero-float {
+    display: none;
+  }
+}
+
+.hero-browser {
   overflow: hidden;
   border-radius: 10px;
 }

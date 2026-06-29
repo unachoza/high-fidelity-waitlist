@@ -49,3 +49,9 @@
 .step-card p {
 	line-height: 1.8;
 }
+
+@media (max-width: 640px) {
+	.how-it-works__grid {
+		display: block;
+	}
+}

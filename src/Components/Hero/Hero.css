@@ -5,6 +5,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--dark);
+  color: var(--dark-fg);
 }
 
 .hero-grid-overlay {

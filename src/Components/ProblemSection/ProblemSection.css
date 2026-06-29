@@ -60,3 +60,14 @@
 .problem-section__content p {
 	line-height: 1.8;
 }
+
+@media (max-width: 640px) {
+  .problem-section__container{
+    gap: 1rem;
+  }
+  
+  .problem-section__content{
+	display: flex;
+	flex-direction: column;
+  }
+}

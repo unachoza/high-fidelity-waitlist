@@ -6,17 +6,17 @@ const STEPS = [
 	{
 		num: "01",
 		title: "Import",
-		desc: "Connect your inbox and purchase history.",
+		desc: "Connect your inbox and purchase history. Bring in your wardrobe effortlessly — receipts, orders, and existing items catalogued without friction.",
 	},
 	{
 		num: "02",
 		title: "Organize",
-		desc: "Track condition, location and care.",
+		desc: "Track each garment's condition, location, and care requirements. Know what's at the dry cleaner, what needs repair, and what's truly available.",
 	},
 	{
 		num: "03",
 		title: "Understand",
-		desc: "Learn how your wardrobe is actually used.",
+		desc: "Discover patterns in how you wear and care for your clothes. See what you reach for, what you've forgotten, and what your wardrobe is telling you.",
 	},
 ];
 

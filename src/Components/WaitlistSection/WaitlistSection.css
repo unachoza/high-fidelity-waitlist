@@ -63,43 +63,100 @@
 	margin-bottom: 3rem;
 }
 
-.waitlist__row {
-	display: flex;
-	max-width: 460px;
+.waitlist__form {
+	max-width: 440px;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	text-align: left;
 }
 
-.waitlist__row input {
-	flex: 1;
-
-	padding: 1rem;
-
-	border: 1px solid
-		var(--border);
-
-	border-right: none;
+.waitlist__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
 }
 
-.waitlist__row button {
-	border: none;
-
-	background: var(--dark);
-
-	color: var(--dark-fg);
-
-	padding: 1rem 1.5rem;
-
-	cursor: pointer;
-
+.waitlist__field label {
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
+	color: var(--muted);
+}
 
-	letter-spacing: 0.1em;
+.waitlist__field .optional {
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	color: #b8a99b;
+}
+
+.waitlist__field input {
+	width: 100%;
+	padding: 0.85rem 1rem;
+	background: var(--stone);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	font-family: var(--sans);
+	font-size: 0.95rem;
+	color: var(--fg);
+	outline: none;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.waitlist__field input:focus {
+	border-color: var(--label);
+	box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+}
+
+.waitlist__field input.input-error {
+	border-color: #c0614a;
+	box-shadow: 0 0 0 3px rgba(192, 97, 74, 0.1);
+}
+
+.waitlist__error {
+	font-size: 12px;
+	color: #c0614a;
+	margin-top: 0.1rem;
+}
+
+.waitlist__error--submit {
+	text-align: center;
+}
+
+.waitlist__submit {
+	margin-top: 0.25rem;
+	padding: 1rem;
+	border: none;
+	border-radius: 3px;
+	background: var(--dark);
+	color: var(--dark-fg);
+	font-family: var(--sans);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background 0.2s, opacity 0.2s;
+}
+
+.waitlist__submit:hover {
+	background: var(--muted);
+}
+
+.waitlist__submit.loading {
+	opacity: 0.7;
+	cursor: progress;
 }
 
 .waitlist__note {
-	margin-top: 1rem;
-
+	margin-top: 0.5rem;
 	font-size: 11px;
+	text-align: center;
+	color: var(--muted);
 }
 
 .waitlist__success {
@@ -127,13 +184,7 @@
 }
 
 @media (max-width: 768px) {
-	.waitlist__row {
-		flex-direction: column;
-	}
-
-	.waitlist__row input {
-		border-right: 1px solid
-			var(--border);
-		border-bottom: none;
+	.waitlist__form {
+		max-width: 100%;
 	}
 }

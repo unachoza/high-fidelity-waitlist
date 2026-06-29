@@ -1,171 +1,60 @@
-// import FadeIn from "../FadeIn/FadeIn";
-
-// import screenGrid from "../../imports/Screenshot_2026-06-24_at_4.42.26_PM.png";
-// import screenFilters from "../../imports/Screenshot_2026-06-24_at_4.43.15_PM.png";
-// import screenOnboard from "../../imports/Screenshot_2026-06-24_at_4.43.40_PM.png";
-// import screenTextile from "../../imports/Screenshot_2026-06-24_at_4.44.03_PM.png";
-
-// import "./ProductPreview.css";
-
-// const PREVIEWS = [
-// 	{
-// 		src: screenFilters,
-// 		title: "Wardrobe Inventory",
-// 		alt: "Inventory filters",
-// 	},
-// 	{
-// 		src: screenOnboard,
-// 		title: "Garment Setup",
-// 		alt: "Onboarding flow",
-// 	},
-// 	{
-// 		src: screenTextile,
-// 		title: "Textile Knowledge",
-// 		alt: "Textile compendium",
-// 	},
-// ];
-
-// const ProductPreview = () => {
-// 	return (
-// 		<section className="product-preview">
-// 			<div className="product-preview__container">
-// 				<FadeIn>
-// 					<div className="product-preview__header">
-// 						<div className="section-heading">
-// 							<div className="section-heading__line" />
-// 							<span>Product Preview</span>
-// 							<div className="section-heading__line" />
-// 						</div>
-
-// 						<h2>
-// 							Every detail.
-// 							<br />
-// 							In one place.
-// 						</h2>
-// 					</div>
-// 				</FadeIn>
-
-// 				<FadeIn delay={100}>
-// 					<div className="product-preview__hero">
-// 						<img
-// 							src={screenGrid}
-// 							alt="Wardrobe inventory"
-// 						/>
-// 					</div>
-// 				</FadeIn>
-
-// 				<div className="product-preview__grid">
-// 					{PREVIEWS.map(
-// 						(
-// 							preview,
-// 							index,
-// 						) => (
-// 							<FadeIn
-// 								key={
-// 									preview.title
-// 								}
-// 								delay={
-// 									index *
-// 									80
-// 								}
-// 							>
-// 								<div className="preview-card">
-// 									<img
-// 										src={
-// 											preview.src
-// 										}
-// 										alt={
-// 											preview.alt
-// 										}
-// 									/>
-// 								</div>
-
-// 								<p className="preview-card__caption">
-// 									{
-// 										preview.title
-// 									}
-// 								</p>
-// 							</FadeIn>
-// 						),
-// 					)}
-// 				</div>
-// 			</div>
-// 		</section>
-// 	);
-// };
-
-// export default ProductPreview;
+import FadeIn from "../FadeIn/FadeIn";
 
 import "./ProductPreview.css";
 
-interface ProductPreviewProps {
-  theme: any;
-  screenGrid: string;
-  screenFilters: string;
-  screenOnboard: string;
-  screenTextile: string;
-}
+/*
+ * NOTE: the original product screenshots are not in the repo yet.
+ * `hero.png` is used as an interim stand-in for all four slots.
+ * Drop real screens into src/assets and swap the imports below.
+ */
+// import screenGrid from "../../assets/hero.png";
+// import filterCloset from "../../assets/filterCloset.png";
+import carousel from "../../assets/carousel.png";
+// import animal from "../../assets/screenshots/animal-fiber.png";
+// import plant from "../../assets/screenshots/plant-fiber.png";
+// import semi from "../../assets/screenshots/semi-senthetic-fiber.png";
+import stainRemoval1 from "../../assets/screenshots/stain-removal1.png";
+// import stainRemoval2 from "../../assets/screenshots//stain-removal2.png";
+// import filters from "../../assets/screenshots//filtercloset.png";
+import filterMore from "../../assets/screenshots//filter-more.png";
+import details from "../../assets/screenshots/card-details.png";
 
-const ProductPreview = ({
-  theme,
-  screenGrid,
-  screenFilters,
-  screenOnboard,
-  screenTextile,
-}: ProductPreviewProps) => {
-  return (
-    <section
-      className="product-preview"
-      style={{ backgroundColor: theme.bg }}
-    >
-      <div className="product-preview-container">
-        <div className="product-preview-header">
-          <span className="section-label">
-            Product Preview
-          </span>
+const PREVIEWS = [
+	{ src: filterMore, title: "Wardrobe Search & Filter", alt: "Inventory filters" },
+	{ src: details, title: "Garment Details", alt: "Card Item details" },
+	{ src: stainRemoval1, title: "Stain Removal Guide", alt: "Stain Removal Guide Notes" },
+];
 
-          <h2>
-            Every detail.
-            <br />
-            In one place.
-          </h2>
-        </div>
+const ProductPreview = () => {
+	return (
+		<section className="product-preview">
+			<div className="product-preview-container">
+				<FadeIn>
+					<div className="product-preview-header">
+						<span className="section-label">Product Preview</span>
+						<h2>Every detail. In one place.</h2>
+					</div>
+				</FadeIn>
 
-        <div className="product-preview-hero">
-          <img
-            src={screenGrid}
-            alt="Wardrobe Inventory"
-          />
-        </div>
+				<FadeIn delay={100}>
+					<div className="product-preview-hero">
+						<img src={carousel} alt="Wardrobe inventory" />
+					</div>
+				</FadeIn>
 
-        <div className="product-preview-grid">
-          <div className="preview-card">
-            <img
-              src={screenFilters}
-              alt="Filters"
-            />
-            <p>Wardrobe Inventory</p>
-          </div>
-
-          <div className="preview-card">
-            <img
-              src={screenOnboard}
-              alt="Onboarding"
-            />
-            <p>Garment Setup</p>
-          </div>
-
-          <div className="preview-card">
-            <img
-              src={screenTextile}
-              alt="Textile Compendium"
-            />
-            <p>Textile Knowledge</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+				<div className="product-preview-grid">
+					{PREVIEWS.map((preview, index) => (
+						<FadeIn key={preview.title} delay={index * 80}>
+							<div className="preview-card">
+								<img src={preview.src} alt={preview.alt} />
+								<p>{preview.title}</p>
+							</div>
+						</FadeIn>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 };
 
 export default ProductPreview;
