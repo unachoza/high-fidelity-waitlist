@@ -12,7 +12,7 @@
         ENTRY_PHONE  = the entry.YYYY id for the phone field
 ───────────────────────────────────────────────────────────── */
 
-export const WAITLIST_FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
+export const WAITLIST_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
 
 export const WAITLIST_ENTRY_EMAIL = "entry.171178120";
 export const WAITLIST_ENTRY_PHONE = "entry.134399048";
