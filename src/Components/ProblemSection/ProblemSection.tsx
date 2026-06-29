@@ -10,9 +10,7 @@ const ProblemSection = () => {
 					<div className="problem-section__label">
 						<div className="problem-section__line" />
 
-						<span>
-							The Problem
-						</span>
+						<span>The Problem</span>
 					</div>
 
 					<div>
@@ -24,19 +22,13 @@ const ProblemSection = () => {
 
 						<div className="problem-section__content">
 							<p>
-								Clothes live across
-								closets, storage
-								bins, dry cleaners,
-								suitcases and
-								borrowed piles.
+								Clothes live across closets, storage bins, suitcases, dry cleaners, and borrowed piles. We buy new
+								things because we forget what we already own.
 							</p>
 
 							<p>
-								Nothing To Wear
-								gives you a clear
-								view of everything
-								you own and where
-								it actually is.
+								We get dressed in the dark. Nothing To Wear is the light — a clear, organized picture of everything
+								you own and where it actually is.
 							</p>
 						</div>
 					</div>
