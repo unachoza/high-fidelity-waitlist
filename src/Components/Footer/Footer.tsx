@@ -14,7 +14,8 @@ const Footer = () => {
 				<div className="footer-links">
 					<a href="/">Privacy</a>
 					<a href="/">Contact</a>
-					<span>© 2026 Nothing To Wear · Founded by Arianna Choza</span>
+					<a href="/">2026 Nothing To Wear</a>
+					<a href="/">Founded by Arianna Choza</a>
 				</div>
 			</div>
 		</footer>

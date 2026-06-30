@@ -45,6 +45,7 @@
 	font-family: "Cormorant Garamond", serif;
 	font-size: 1rem;
 	letter-spacing: 0.05em;
+	color:#faf8f5;
 }
 
 .navbar__theme-toggle {
@@ -76,4 +77,12 @@
 	padding: 0.75rem 1.5rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+	border-radius: 2px;
+	 transition: box-shadow .4s ease;
+}
+
+button.navbar__cta:hover{
+	opacity: (.8);
+	cursor: pointer;
+	 box-shadow: 0 0 7px 3px rgba(161, 128, 82, .8);
 }

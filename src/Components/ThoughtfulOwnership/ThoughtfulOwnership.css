@@ -35,11 +35,7 @@
 
 .ownership__eyebrow span {
 	color: var(--gold);
-
-	font-size: 10px;
-
 	text-transform: uppercase;
-
 	letter-spacing: 0.16em;
 }
 
@@ -88,12 +84,8 @@
 }
 
 .ownership__label {
-	font-size: 10px;
-
 	text-transform: uppercase;
-
 	letter-spacing: 0.1em;
-
 	opacity: 0.55;
 }
 
@@ -117,5 +109,19 @@
 @media (max-width: 900px) {
 	.ownership__container {
 		grid-template-columns: 1fr;
+	}
+
+	.ownership{
+		padding: 8rem 1.5rem;
+	}
+
+	.ownership__content{
+    		max-width: 95vw;
+    		container-type: inline-size;
+	}
+
+	.ownership__stats{
+		gap: 1.4rem;
+   		 font-size: .8rem;
 	}
 }

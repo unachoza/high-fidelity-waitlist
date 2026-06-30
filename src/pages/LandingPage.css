@@ -23,6 +23,29 @@
 	transform: translateY(0);
 }
 
+.slide-in {
+  opacity: 0;
+  transform: translateX(-30px);
+  font-size: 2.4rem;
+}
+
+.loaded .slide-in {
+  animation: slideIn 700ms ease forwards;
+}
+
+.loaded .slide-in:nth-child(1) { animation-delay: 0ms; }
+.loaded .slide-in:nth-child(2) { animation-delay: 250ms; }
+.loaded .slide-in:nth-child(3) { animation-delay: 500ms; }
+.loaded .slide-in:nth-child(4) { animation-delay: 750ms; }
+.loaded .slide-in:nth-child(5) { animation-delay: 1000ms; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* ── Shared eyebrow / section heading ── */
 .section-heading {
 	display: flex;
@@ -39,7 +62,7 @@
 
 .section-heading span,
 .section-label {
-	font-size: 10px;
+	font-size: 1rem;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
 	color: var(--label);
