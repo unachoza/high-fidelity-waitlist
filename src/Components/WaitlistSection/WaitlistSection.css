@@ -28,12 +28,8 @@
 }
 
 .waitlist__eyebrow span {
-	font-size: 10px;
-
 	text-transform: uppercase;
-
 	letter-spacing: 0.16em;
-
 	color: var(--gold);
 }
 
@@ -79,7 +75,6 @@
 }
 
 .waitlist__field label {
-	font-size: 10px;
 	font-weight: 500;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
