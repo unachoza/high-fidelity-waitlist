@@ -62,7 +62,7 @@
 
 .hero h1 {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   font-weight: 300;
   line-height: 1.1;
   margin-bottom: 2rem;
