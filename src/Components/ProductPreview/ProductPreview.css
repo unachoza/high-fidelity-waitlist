@@ -51,7 +51,7 @@
   border-radius: 6px;
   display: block;
   margin-bottom: 1rem;
-  border: solid;
+  border: solid 2px var(--muted);
 }
 
 .preview-card p {
