@@ -39,6 +39,7 @@ const ProductPreview = () => {
 				<FadeIn delay={100}>
 					<div className="product-preview-hero">
 						<img src={carousel} alt="Wardrobe inventory" />
+						<p>Your Digital Closet</p>
 					</div>
 				</FadeIn>
 
