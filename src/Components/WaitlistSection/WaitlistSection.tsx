@@ -13,8 +13,10 @@ type Stage = "form" | "success" | "survey-done";
 const WaitlistSection = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
+	const [consent, setConsent] = useState(false);
 	const [emailError, setEmailError] = useState<string | null>(null);
 	const [phoneError, setPhoneError] = useState<string | null>(null);
+	const [consentError, setConsentError] = useState<string | null>(null);
 	const [submitError, setSubmitError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [stage, setStage] = useState<Stage>("form");
@@ -24,9 +26,11 @@ const WaitlistSection = () => {
 
 		const eErr = validateEmail(email.trim());
 		const pErr = validatePhone(phone.trim());
+		const cErr = consent ? null : "Please agree to the Privacy Policy to continue.";
 		setEmailError(eErr);
 		setPhoneError(pErr);
-		if (eErr || pErr) return;
+		setConsentError(cErr);
+		if (eErr || pErr || cErr) return;
 
 		setSubmitError(null);
 		setLoading(true);
@@ -96,6 +100,28 @@ const WaitlistSection = () => {
 										className={phoneError ? "input-error" : ""}
 									/>
 									{phoneError && <span className="waitlist__error">{phoneError}</span>}
+								</div>
+
+								<div className="waitlist__field waitlist__field--consent">
+									<label className="waitlist__consent">
+										<input
+											type="checkbox"
+											checked={consent}
+											onChange={(e) => {
+												setConsent(e.target.checked);
+												if (consentError) setConsentError(null);
+											}}
+										/>
+										<span>
+											I agree to the{" "}
+											<a href="#privacy" target="_blank" rel="noopener noreferrer">
+												Privacy Policy
+											</a>{" "}
+											and consent to my email (and phone, if provided) being collected for
+											waitlist communications.
+										</span>
+									</label>
+									{consentError && <span className="waitlist__error">{consentError}</span>}
 								</div>
 
 								<button type="submit" className={`waitlist__submit ${loading ? "loading" : ""}`} disabled={loading}>

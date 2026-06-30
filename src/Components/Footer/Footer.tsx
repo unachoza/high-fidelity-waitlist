@@ -12,7 +12,9 @@ const Footer = () => {
 				</div>
 
 				<div className="footer-links">
-					<a href="/">Privacy</a>
+					<a href="#privacy" target="_blank" rel="noopener noreferrer">
+						Privacy
+					</a>
 					<a href="/">Contact</a>
 					<a href="/">2026 Nothing To Wear</a>
 					<a href="/">Founded by Arianna Choza</a>

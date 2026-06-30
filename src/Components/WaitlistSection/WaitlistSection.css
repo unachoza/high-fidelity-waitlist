@@ -89,7 +89,7 @@
 	color: #b8a99b;
 }
 
-.waitlist__field input {
+.waitlist__field input:not([type="checkbox"]) {
 	width: 100%;
 	padding: 0.85rem 1rem;
 	background: var(--stone);
@@ -102,7 +102,7 @@
 	transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.waitlist__field input:focus {
+.waitlist__field input:not([type="checkbox"]):focus {
 	border-color: var(--label);
 	box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
 }
@@ -120,6 +120,36 @@
 
 .waitlist__error--submit {
 	text-align: center;
+}
+
+.waitlist__field--consent {
+	gap: 0;
+}
+
+.waitlist__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 1.6;
+	color: var(--muted);
+}
+
+.waitlist__consent input {
+	width: 16px;
+	height: 16px;
+	margin: 0.2rem 0 0;
+	flex: 0 0 16px;
+	accent-color: var(--dark);
+}
+
+.waitlist__consent span {
+	flex: 1 1 auto;
+}
+
+.waitlist__consent a {
+	color: var(--label);
 }
 
 .waitlist__submit {
