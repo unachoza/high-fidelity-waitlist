@@ -42,10 +42,15 @@
 }
 
 .navbar__title {
-	font-family: "Cormorant Garamond", serif;
-	font-size: 1rem;
-	letter-spacing: 0.05em;
-	color:#faf8f5;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: #faf8f5;
+  transition: color 0.3s ease;
+}
+
+.navbar--scrolled .navbar__title {
+  color: var(--fg);
 }
 
 .navbar__theme-toggle {
@@ -73,12 +78,12 @@
 	border: none;
 	cursor: pointer;
 	background: var(--gold);
-
 	padding: 0.75rem 1.5rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	border-radius: 2px;
-	 transition: box-shadow .4s ease;
+	transition: box-shadow .4s ease;
+	color: black;
 }
 
 button.navbar__cta:hover{
