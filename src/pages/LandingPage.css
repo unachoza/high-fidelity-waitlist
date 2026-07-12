@@ -171,6 +171,58 @@
 	accent-color: var(--label);
 }
 
+/* ── Q2 ranked choice ──────────────────────── */
+.survey__rank-hint {
+	color: var(--muted);
+	font-size: 0.82rem;
+	margin: -0.4rem 0 0.9rem;
+}
+
+/* the ranked options are <button>s — reset the browser chrome */
+.survey__option--rank {
+	width: 100%;
+	text-align: left;
+	font-family: var(--sans);
+	color: var(--fg);
+	appearance: none;
+}
+
+.survey__rank-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: #fff;
+	color: var(--num-color);
+	font-family: var(--serif);
+	font-style: italic;
+	font-size: 0.9rem;
+	transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.survey__option--ranked {
+	border-color: var(--label);
+	background: #fff;
+}
+
+.survey__option--ranked .survey__rank-badge {
+	background: var(--label);
+	border-color: var(--label);
+	color: #fff;
+}
+
+.survey__option--dim {
+	opacity: 0.5;
+}
+
+.survey__option--dim:hover {
+	border-color: var(--border);
+}
+
 .survey__submit {
 	width: 100%;
 	margin-top: 0.5rem;

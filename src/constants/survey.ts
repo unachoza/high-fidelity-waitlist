@@ -28,6 +28,18 @@ export const USEFUL_OPTIONS = [
 	"Learning about fabrics and garment care",
 ];
 
+/** How many options a respondent may rank in Q2. */
+export const USEFUL_RANK_LIMIT = 3;
+
+/**
+ * Serializes an ordered top-N selection into a single Google Forms value,
+ * e.g. ["Outfit planning", "Travel packing"] → "1. Outfit planning | 2. Travel packing".
+ * Returns "" when nothing was ranked so the field submits empty.
+ */
+export function serializeRanking(ranked: readonly string[]): string {
+	return ranked.map((option, index) => `${index + 1}. ${option}`).join(" | ");
+}
+
 export const ITEM_COUNT_OPTIONS = [
 	"Under 50",
 	"50–100",
