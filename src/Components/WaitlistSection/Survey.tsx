@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import {
 	USEFUL_OPTIONS,
+	USEFUL_RANK_LIMIT,
 	ITEM_COUNT_OPTIONS,
+	serializeRanking,
 	submitSurvey,
 } from "../../constants/survey";
 
@@ -15,10 +17,26 @@ interface SurveyProps {
 
 const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 	const [frustration, setFrustration] = useState("");
-	const [mostUseful, setMostUseful] = useState("");
+	const [ranked, setRanked] = useState<string[]>([]);
 	const [itemCount, setItemCount] = useState("");
 	const [submitError, setSubmitError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
+
+	// Tap to add to the ranking (in tap order); tap again to remove.
+	// Immutable updates only — never mutate the existing array.
+	const toggleRank = (option: string) => {
+		setRanked((prev) => {
+			if (prev.includes(option)) {
+				return prev.filter((o) => o !== option);
+			}
+			if (prev.length >= USEFUL_RANK_LIMIT) {
+				return prev;
+			}
+			return [...prev, option];
+		});
+	};
+
+	const rankReached = ranked.length >= USEFUL_RANK_LIMIT;
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -26,7 +44,13 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 		setLoading(true);
 
 		try {
-			await submitSurvey(email, phone, frustration, mostUseful, itemCount);
+			await submitSurvey(
+				email,
+				phone,
+				frustration,
+				serializeRanking(ranked),
+				itemCount,
+			);
 			onDone();
 		} catch {
 			setSubmitError(
@@ -40,15 +64,19 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 	return (
 		<form className="survey" onSubmit={handleSubmit}>
 			<div className="survey__intro">
-				<h3>One more thing?</h3>
-				<p>Optional — help shape what we build. Takes about a minute.</p>
+				<h3>You're in. Help us build it.</h3>
+				<p>
+					Three quick questions — your answers decide what we ship first.
+					Under a minute, and totally optional.
+				</p>
 			</div>
 
 			{/* Q1 — open text */}
 			<div className="survey__q">
 				<label className="survey__q-label" htmlFor="survey-frustration">
 					<span className="survey__q-num">01</span>
-					What's the biggest frustration you have with your wardrobe today?
+					When you open a full closet and still feel like you have nothing to
+					wear — what's really going on?
 				</label>
 				<textarea
 					id="survey-frustration"
@@ -58,28 +86,37 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 				/>
 			</div>
 
-			{/* Q2 — single choice */}
+			{/* Q2 — ranked choice (tap to rank top 3) */}
 			<div className="survey__q">
 				<span className="survey__q-label">
 					<span className="survey__q-num">02</span>
-					Which sounds most useful to you?
+					If we nailed just a few things first, which matter most?
 				</span>
+				<p className="survey__rank-hint">
+					Tap to rank your top {USEFUL_RANK_LIMIT} — tap again to remove.
+				</p>
 				<div className="survey__options">
-					{USEFUL_OPTIONS.map((option) => (
-						<label
-							key={option}
-							className={`survey__option ${mostUseful === option ? "survey__option--checked" : ""}`}
-						>
-							<input
-								type="radio"
-								name="mostUseful"
-								value={option}
-								checked={mostUseful === option}
-								onChange={() => setMostUseful(option)}
-							/>
-							{option}
-						</label>
-					))}
+					{USEFUL_OPTIONS.map((option) => {
+						const position = ranked.indexOf(option);
+						const isRanked = position >= 0;
+						const isDimmed = !isRanked && rankReached;
+						return (
+							<button
+								key={option}
+								type="button"
+								aria-pressed={isRanked}
+								onClick={() => toggleRank(option)}
+								className={`survey__option survey__option--rank ${
+									isRanked ? "survey__option--ranked" : ""
+								} ${isDimmed ? "survey__option--dim" : ""}`}
+							>
+								<span className="survey__rank-badge">
+									{isRanked ? position + 1 : ""}
+								</span>
+								{option}
+							</button>
+						);
+					})}
 				</div>
 			</div>
 
@@ -87,7 +124,8 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 			<div className="survey__q">
 				<span className="survey__q-label">
 					<span className="survey__q-num">03</span>
-					How many clothing items do you think you own?
+					Roughly how many clothing items do you own? (Best guess — most
+					people undercount.)
 				</span>
 				<div className="survey__options">
 					{ITEM_COUNT_OPTIONS.map((option) => (

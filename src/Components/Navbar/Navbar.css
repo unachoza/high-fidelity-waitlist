@@ -89,5 +89,5 @@
 button.navbar__cta:hover{
 	opacity: (.8);
 	cursor: pointer;
-	 box-shadow: 0 0 7px 3px rgba(161, 128, 82, .8);
+	 box-shadow: 0 0 7px 3px rgba(178, 134, 117, 0.6); /* terracotta glow */
 }

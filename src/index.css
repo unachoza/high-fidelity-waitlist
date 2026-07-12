@@ -6,29 +6,29 @@
 
 :root {
 	/* core surfaces */
-	--bg: #faf8f5; /* linen — primary light surface */
+	--bg: #faf8f5; /* alabaster — primary light surface */
 	--fg: #492f28; /* espresso — body/heading on light */
-	--dark: #0d1a2b; /* midnight navy — dark sections */
-	--dark-fg: #faf8f5; /* linen on dark */
+	--dark: #231612; /* ink — dark sections */
+	--dark-fg: #faf8f5; /* alabaster on dark */
 
 	/* accents */
-	--gold: #c9a474; /* champagne gold */
-	--gold-hover: #b8935f;
+	--gold: #b28675; /* terracotta — primary accent */
+	--gold-hover: #9c7060; /* terracotta deep */
 
 	/* secondary surfaces */
 	--stone: #f3eee7; /* sand */
-	--stone-mid: #e8e1d6;
+	--stone-mid: #ece4d9;
 
 	/* borders */
-	--border: #e5dfd6;
-	--border-dark: rgba(255, 255, 255, 0.12);
+	--border: rgba(73, 47, 40, 0.14); /* espresso hairline */
+	--border-dark: rgba(255, 255, 255, 0.14);
 
 	/* text shades */
-	--muted: #675647; /* walnut */
-	--label: #b28675; /* terracotta — eyebrow labels */
+	--muted: #8a7a72; /* warm taupe */
+	--label: #9c7060; /* terracotta deep — eyebrow labels */
 	--num-color: #c2b8a9; /* faint serif numerals on stone */
 
-	--serif: "Cormorant Garamond", "Lora", Georgia, serif;
+	--serif: "Lora", Georgia, serif;
 	--sans: "DM Sans", system-ui, -apple-system, sans-serif;
 
 	font-family: var(--sans);
@@ -55,7 +55,10 @@ html {
 
 body {
 	margin: 0;
-	background: var(--bg);
+	/* soft terracotta glow at the top-left, per the design mockups */
+	background:
+		radial-gradient(1100px 480px at 15% -5%, rgba(178, 134, 117, 0.12), transparent 60%),
+		var(--bg);
 	color: var(--fg);
 }
 

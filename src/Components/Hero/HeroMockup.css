@@ -3,7 +3,7 @@
 }
 
 .hero-browser {
-  background: #0a1422;
+  background: #1a100c; /* deep ink, one step darker than --dark */
   border: 1px solid var(--border-dark);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
