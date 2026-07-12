@@ -6,7 +6,7 @@
   display: inline-block;
   padding: 14px 36px;
   background: transparent;
-  border: 1px solid rgba(201, 164, 116, 0.5);
+  border: 1px solid rgba(178, 134, 117, 0.55); /* terracotta */
   border-radius: 2px;
   color: var(--gold);
   font-family: var(--sans);
@@ -19,9 +19,9 @@
 }
 
 .hero-cta:hover {
-  background: rgba(201, 164, 116, 0.12);
+  background: rgba(178, 134, 117, 0.14);
   border-color: var(--gold);
-  color: #e8c98a;
+  color: #d9b4a4; /* light terracotta on dark */
 }
 
 .hero-form-row {
