@@ -81,18 +81,8 @@ export const SURVEY_ENTRY_FRUSTRATION = "entry.1512875088";
 export const SURVEY_ENTRY_USEFUL = "entry.64709087";
 export const SURVEY_ENTRY_COUNT = "entry.1877331144";
 
-/**
- * ⚠️ NOT YET WIRED — add these two questions to the Google Form, then
- * replace the empty strings below with their `entry.XXXX` ids:
- *   Q4 (multiple choice): "How involved do you want to be?"
- *     options must match FEEDBACK_INTEREST_OPTIONS above, in order.
- *   Q5 (paragraph / short answer): "Know someone who'd love this?
- *     Drop their email or phone (optional)"
- * Until both are filled in, submitSurvey() skips sending these fields
- * rather than erroring, so the rest of the survey keeps working.
- */
-export const SURVEY_ENTRY_FEEDBACK_INTEREST = "";
-export const SURVEY_ENTRY_REFERRALS = "";
+export const SURVEY_ENTRY_FEEDBACK_INTEREST = "entry.1075906102";
+export const SURVEY_ENTRY_REFERRALS = "entry.1885652293";
 
 export async function submitSurvey(
 	email: string,
