@@ -17,7 +17,13 @@ const Footer = () => {
 					</a>
 					<a href="/">Contact</a>
 					<a href="/">2026 Nothing To Wear</a>
-					<a href="/">Founded by Arianna Choza</a>
+					<a
+						href="https://www.linkedin.com/in/arianna-choza/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Founded by Arianna Choza
+					</a>
 				</div>
 			</div>
 		</footer>

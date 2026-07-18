@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
 				</a>
 
 				<h1>Privacy Policy</h1>
-				<p className="privacy__updated">Effective date: June 30, 2026</p>
+				<p className="privacy__updated">Effective date: July 18, 2026</p>
 
 				<p>
 					Nothing To Wear ("we," "us," "our") is currently operated by its
@@ -38,6 +38,19 @@ const PrivacyPolicy = () => {
 					solely for product research.
 				</p>
 				<p>
+					<strong>Referrals.</strong> The survey also lets you refer people you
+					think would like Nothing To Wear. If you choose to do this, we collect
+					the <strong>email address and (optionally) phone number</strong> you
+					provide for each person, solely so we can send them a one-time
+					invitation to join the waitlist. We do not use referred contacts for
+					any other purpose, and we do not add them to ongoing communications
+					unless they join the waitlist themselves. By submitting someone's
+					contact details, you confirm you know that person and have their
+					permission to share their information with us. If a referred person
+					asks us to delete their information, we will do so — see "Exercising
+					Your Rights" below.
+				</p>
+				<p>
 					We do not use cookies, analytics, or tracking scripts on this site.
 					The only third parties involved are described below.
 				</p>
@@ -47,6 +60,7 @@ const PrivacyPolicy = () => {
 					<li>To maintain and manage the waitlist.</li>
 					<li>To email you about early access, launch updates, and related product communications.</li>
 					<li>To understand user needs and improve the product, using optional survey responses.</li>
+					<li>To send a one-time waitlist invitation to any person you refer, using the contact details you provide.</li>
 				</ul>
 				<p>We do not sell, rent, or trade your personal information.</p>
 
