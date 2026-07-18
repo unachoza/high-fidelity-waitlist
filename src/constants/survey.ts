@@ -1,20 +1,13 @@
 /* ─────────────────────────────────────────────────────────────
    Optional user-research survey (shown after waitlist signup).
-
-   ⚠️ NOT YET WIRED TO A BACKEND.
-   The waitlist Google Form only has Email + Phone fields, so these
-   three questions have nowhere to submit yet. To make the survey
-   persist responses:
-     1. Add three questions to the Google Form (or create a 2nd form):
-        Q1 short answer, Q2 + Q3 multiple choice.
-     2. Grab each field's `entry.XXXX` id (see constants/waitlist.ts).
-     3. Fill in SURVEY_ENTRY_* below and implement submitSurvey().
 ───────────────────────────────────────────────────────────── */
 
 export interface SurveyResponse {
 	frustration: string;
 	mostUseful: string;
 	itemCount: string;
+	feedbackInterest: string;
+	referrals: string;
 }
 
 export const USEFUL_OPTIONS = [
@@ -48,6 +41,37 @@ export const ITEM_COUNT_OPTIONS = [
 	"500+",
 ];
 
+/** Q4 — how involved a Founding Member wants to be in shaping the product. */
+export const FEEDBACK_INTEREST_OPTIONS = [
+	"Very interested — reach out to me, I want to help shape this",
+	"Some feedback — check in occasionally",
+	"Don't bother me — I'll use it quietly",
+];
+
+/** Q5 — a single person a Founding Member wants to refer. */
+export interface Referral {
+	email: string;
+	phone: string;
+}
+
+/**
+ * Serializes referral rows into one Google Forms value. Empty rows are
+ * dropped. Each kept row becomes "email (phone)" (phone omitted if blank),
+ * rows joined with " | ".
+ *
+ * Attribution ("who referred whom") is by-row: the Google Form row already
+ * carries the referrer's own email in WAITLIST_ENTRY_EMAIL, so pairing that
+ * column with this one in the response sheet tells you exactly who each
+ * referred contact came from — no extra field needed.
+ */
+export function serializeReferrals(referrals: readonly Referral[]): string {
+	return referrals
+		.map((r) => ({ email: r.email.trim(), phone: r.phone.trim() }))
+		.filter((r) => r.email || r.phone)
+		.map((r) => (r.phone ? `${r.email} (${r.phone})` : r.email))
+		.join(" | ");
+}
+
 export const WAITLIST_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfMZcKmwjU52jgjjBYY2WEHS-0JSuw0af8mTDoadaKX3C40gA/formResponse";
 
 export const WAITLIST_ENTRY_EMAIL = "entry.171178120";
@@ -57,12 +81,27 @@ export const SURVEY_ENTRY_FRUSTRATION = "entry.1512875088";
 export const SURVEY_ENTRY_USEFUL = "entry.64709087";
 export const SURVEY_ENTRY_COUNT = "entry.1877331144";
 
+/**
+ * ⚠️ NOT YET WIRED — add these two questions to the Google Form, then
+ * replace the empty strings below with their `entry.XXXX` ids:
+ *   Q4 (multiple choice): "How involved do you want to be?"
+ *     options must match FEEDBACK_INTEREST_OPTIONS above, in order.
+ *   Q5 (paragraph / short answer): "Know someone who'd love this?
+ *     Drop their email or phone (optional)"
+ * Until both are filled in, submitSurvey() skips sending these fields
+ * rather than erroring, so the rest of the survey keeps working.
+ */
+export const SURVEY_ENTRY_FEEDBACK_INTEREST = "";
+export const SURVEY_ENTRY_REFERRALS = "";
+
 export async function submitSurvey(
 	email: string,
 	phone: string,
 	frustration: string,
 	mostUseful: string,
 	itemCount: string,
+	feedbackInterest: string,
+	referrals: string,
 ): Promise<void> {
 	const body = new FormData();
 	body.append(WAITLIST_ENTRY_EMAIL, email);
@@ -70,6 +109,12 @@ export async function submitSurvey(
 	body.append(SURVEY_ENTRY_FRUSTRATION, frustration);
 	body.append(SURVEY_ENTRY_USEFUL, mostUseful);
 	body.append(SURVEY_ENTRY_COUNT, itemCount);
+	if (SURVEY_ENTRY_FEEDBACK_INTEREST && feedbackInterest) {
+		body.append(SURVEY_ENTRY_FEEDBACK_INTEREST, feedbackInterest);
+	}
+	if (SURVEY_ENTRY_REFERRALS && referrals) {
+		body.append(SURVEY_ENTRY_REFERRALS, referrals);
+	}
 
 	await fetch(WAITLIST_FORM_ACTION, {
 		method: "POST",
