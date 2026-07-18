@@ -223,6 +223,80 @@
 	border-color: var(--border);
 }
 
+.survey__referral-toggle {
+	margin-bottom: 0.9rem;
+}
+
+.survey__referrals {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.survey__referral-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.survey__referral-field {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 0.7rem 0.9rem;
+	font-family: var(--sans);
+	font-size: 0.95rem;
+	color: var(--fg);
+	background: var(--stone);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	outline: none;
+}
+
+.survey__referral-field:focus {
+	border-color: var(--label);
+}
+
+.survey__referral-remove {
+	flex: none;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	color: var(--muted);
+	font-size: 1.2rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: border-color 0.15s, color 0.15s;
+}
+
+.survey__referral-remove:hover {
+	border-color: var(--label);
+	color: var(--label);
+}
+
+.survey__referral-add {
+	align-self: flex-start;
+	margin-top: 0.2rem;
+	padding: 0.5rem 0.9rem;
+	background: none;
+	border: 1px dashed var(--border);
+	border-radius: 3px;
+	color: var(--label);
+	font-family: var(--sans);
+	font-size: 0.85rem;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s;
+}
+
+.survey__referral-add:hover {
+	border-color: var(--label);
+	background: var(--stone);
+}
+
 .survey__submit {
 	width: 100%;
 	margin-top: 0.5rem;
