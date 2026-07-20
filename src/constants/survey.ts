@@ -33,13 +33,7 @@ export function serializeRanking(ranked: readonly string[]): string {
 	return ranked.map((option, index) => `${index + 1}. ${option}`).join(" | ");
 }
 
-export const ITEM_COUNT_OPTIONS = [
-	"Under 50",
-	"50–100",
-	"100–250",
-	"250–500",
-	"500+",
-];
+export const ITEM_COUNT_OPTIONS = ["Under 50", "50–100", "100–250", "250–500", "500+"];
 
 /** Q4 — how involved a Founding Member wants to be in shaping the product. */
 export const FEEDBACK_INTEREST_OPTIONS = [
