@@ -5,6 +5,7 @@ import Survey from "./Survey";
 
 import { submitWaitlist } from "../../constants/waitlist";
 import { validateEmail, validatePhone } from "../../utils/validation";
+import { COUNTRY_CODES } from "../../constants/countryCodes";
 
 import "./WaitlistSection.css";
 
@@ -13,6 +14,7 @@ type Stage = "form" | "success" | "survey-done";
 const WaitlistSection = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
+	const [countryCode, setCountryCode] = useState("+1");
 	const [consent, setConsent] = useState(false);
 	const [emailError, setEmailError] = useState<string | null>(null);
 	const [phoneError, setPhoneError] = useState<string | null>(null);
@@ -35,8 +37,11 @@ const WaitlistSection = () => {
 		setSubmitError(null);
 		setLoading(true);
 
+		// Combine country code + local number for storage (e.g. "+34 683 19 73 08")
+		const fullPhone = phone.trim() ? `${countryCode} ${phone.trim()}` : "";
+
 		try {
-			await submitWaitlist(email.trim(), phone.trim());
+			await submitWaitlist(email.trim(), fullPhone);
 			setStage("success");
 		} catch {
 			setSubmitError("Something went wrong. Please check your connection and try again.");
@@ -87,18 +92,32 @@ const WaitlistSection = () => {
 									<label htmlFor="waitlist-phone">
 										Phone <span className="optional">optional</span>
 									</label>
-									<input
-										id="waitlist-phone"
-										type="tel"
-										value={phone}
-										onChange={(e) => {
-											setPhone(e.target.value);
-											if (phoneError) setPhoneError(null);
-										}}
-										placeholder="(555) 000-0000"
-										autoComplete="tel"
-										className={phoneError ? "input-error" : ""}
-									/>
+									<div className={`waitlist__phone-group ${phoneError ? "input-error" : ""}`}>
+										<select
+											aria-label="Country code"
+											value={countryCode}
+											onChange={(e) => setCountryCode(e.target.value)}
+											className="waitlist__phone-code"
+										>
+											{COUNTRY_CODES.map(({ code, country, flag }) => (
+												<option key={`${code}-${country}`} value={code}>
+													{flag} {code}
+												</option>
+											))}
+										</select>
+										<input
+											id="waitlist-phone"
+											type="tel"
+											value={phone}
+											onChange={(e) => {
+												setPhone(e.target.value);
+												if (phoneError) setPhoneError(null);
+											}}
+											placeholder="555 000 1234"
+											autoComplete="tel-national"
+											className="waitlist__phone-number"
+										/>
+									</div>
 									{phoneError && <span className="waitlist__error">{phoneError}</span>}
 								</div>
 

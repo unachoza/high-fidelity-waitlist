@@ -122,6 +122,65 @@
 	text-align: center;
 }
 
+/* ── Phone input group (country-code select + number input side by side) ── */
+
+.waitlist__phone-group {
+	display: flex;
+	align-items: stretch;
+	background: var(--stone);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	overflow: hidden;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.waitlist__phone-group:focus-within {
+	border-color: var(--label);
+	box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+}
+
+.waitlist__phone-group.input-error {
+	border-color: #c0614a;
+	box-shadow: 0 0 0 3px rgba(192, 97, 74, 0.1);
+}
+
+.waitlist__phone-code {
+	flex: 0 0 auto;
+	padding: 0.85rem 0.6rem 0.85rem 0.9rem;
+	background: transparent;
+	border: none;
+	border-right: 1px solid var(--border);
+	font-family: var(--sans);
+	font-size: 0.95rem;
+	color: var(--fg);
+	outline: none;
+	cursor: pointer;
+	/* native arrow is fine — keeps it simple */
+}
+
+.waitlist__phone-code:focus {
+	outline: none;
+}
+
+.waitlist__phone-number {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0.85rem 1rem;
+	background: transparent;
+	border: none;
+	font-family: var(--sans);
+	font-size: 0.95rem;
+	color: var(--fg);
+	outline: none;
+}
+
+.waitlist__phone-number::placeholder {
+	color: var(--muted);
+	opacity: 0.6;
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+
 .waitlist__field--consent {
 	gap: 0;
 }
