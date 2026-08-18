@@ -14,13 +14,14 @@ export function validateEmail(value: string): string | null {
 	return null;
 }
 
-export function validatePhone(value: string): string | null {
-	if (!value) return null; // phone is optional — empty is fine
+export function validatePhone(localNumber: string): string | null {
+	if (!localNumber) return null; // phone is optional — empty is fine
 
-	const digits = value.replace(/\D/g, "");
-	// accept 10 digits (US) or 11 if it starts with a 1 (country code)
-	if (digits.length === 11 && digits[0] === "1") return null;
-	if (digits.length === 10) return null;
+	// Strip spaces, dashes, parentheses, and dots — keep only digits
+	const digits = localNumber.replace(/[\s\-().]/g, "").replace(/\D/g, "");
 
-	return "Please enter a 10-digit phone number (e.g. 5550001234).";
+	// Local number should be between 5 and 12 digits (covers all countries)
+	if (digits.length >= 5 && digits.length <= 12) return null;
+
+	return "Please enter a valid phone number.";
 }
