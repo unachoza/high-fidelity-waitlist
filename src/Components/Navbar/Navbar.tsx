@@ -8,6 +8,10 @@ const scrollToWaitlist = () => {
 	document.getElementById("waitlist-section")?.scrollIntoView({ behavior: "smooth" });
 };
 
+const navToBlog = () => {
+	window.location.href = "https://nothingtowear-waitlist.app/blog";
+};
+
 const Navbar = () => {
 	const scrolled = useScrolled();
 
@@ -18,7 +22,9 @@ const Navbar = () => {
 					<img src={logoImg} alt="Nothing To Wear" className="navbar__logo" />
 					<span className={`navbar__title ${scrolled ? "navbar__title--scrolled" : ""}`}>Nothing To Wear</span>
 				</div>
-
+				{/* <button className="navbar__cta" onClick={navToBlog}>
+					Blog
+				</button> */}
 				<button className="navbar__cta" onClick={scrollToWaitlist}>
 					Join Waitlist
 				</button>
