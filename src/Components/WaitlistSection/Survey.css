@@ -152,6 +152,10 @@
 	margin-bottom: 0.9rem;
 }
 
+.waitlist__consent span {
+	color: var(--espresso);
+}
+
 .survey__referrals {
 	display: flex;
 	flex-direction: column;

@@ -38,20 +38,12 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 		setReferralList(checked ? [EMPTY_REFERRAL] : []);
 	};
 
-	const addReferral = () =>
-		setReferralList((prev) => [...prev, EMPTY_REFERRAL]);
+	const addReferral = () => setReferralList((prev) => [...prev, EMPTY_REFERRAL]);
 
-	const removeReferral = (index: number) =>
-		setReferralList((prev) => prev.filter((_, i) => i !== index));
+	const removeReferral = (index: number) => setReferralList((prev) => prev.filter((_, i) => i !== index));
 
-	const updateReferral = (
-		index: number,
-		field: keyof Referral,
-		value: string,
-	) =>
-		setReferralList((prev) =>
-			prev.map((r, i) => (i === index ? { ...r, [field]: value } : r)),
-		);
+	const updateReferral = (index: number, field: keyof Referral, value: string) =>
+		setReferralList((prev) => prev.map((r, i) => (i === index ? { ...r, [field]: value } : r)));
 
 	// Tap to add to the ranking (in tap order); tap again to remove.
 	// Immutable updates only — never mutate the existing array.
@@ -86,9 +78,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 			);
 			onDone();
 		} catch {
-			setSubmitError(
-				"Something went wrong. Please check your connection and try again.",
-			);
+			setSubmitError("Something went wrong. Please check your connection and try again.");
 		} finally {
 			setLoading(false);
 		}
@@ -99,10 +89,9 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 			<div className="survey__intro">
 				<h3>Welcome, Founding Member.</h3>
 				<p>
-					You're one of the first people shaping Nothing To Wear. A few quick
-					questions — under a minute, totally optional — and here's what's in
-					it for you: first access to every new feature, real influence over
-					what we build next, and free access for life as a thank-you.
+					You're one of the first people shaping Nothing To Wear. A few quick questions — under a minute, totally optional — and
+					here's what's in it for you: first access to every new feature, real influence over what we build next, and free access
+					for life as a thank-you.
 				</p>
 			</div>
 
@@ -110,8 +99,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 			<div className="survey__q">
 				<label className="survey__q-label" htmlFor="survey-frustration">
 					<span className="survey__q-num">1.</span>
-					When you open a full closet and still feel like you have nothing to
-					wear — what's really going on?
+					When you open a full closet and still feel like you have nothing to wear — what's really going on?
 				</label>
 				<textarea
 					id="survey-frustration"
@@ -127,9 +115,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 					<span className="survey__q-num">2.</span>
 					If we nailed just a few things first, which matter most?
 				</span>
-				<p className="survey__rank-hint">
-					Tap to rank your top {USEFUL_RANK_LIMIT} — tap again to remove.
-				</p>
+				<p className="survey__rank-hint">Tap to rank your top {USEFUL_RANK_LIMIT} — tap again to remove.</p>
 				<div className="survey__options">
 					{USEFUL_OPTIONS.map((option) => {
 						const position = ranked.indexOf(option);
@@ -145,9 +131,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 									isRanked ? "survey__option--ranked" : ""
 								} ${isDimmed ? "survey__option--dim" : ""}`}
 							>
-								<span className="survey__rank-badge">
-									{isRanked ? position + 1 : ""}
-								</span>
+								<span className="survey__rank-badge">{isRanked ? position + 1 : ""}</span>
 								{option}
 							</button>
 						);
@@ -159,15 +143,11 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 			<div className="survey__q">
 				<span className="survey__q-label">
 					<span className="survey__q-num">3.</span>
-					Roughly how many clothing items do you own? (Best guess — most
-					people undercount.)
+					Roughly how many clothing items do you own? (Best guess — most people undercount.)
 				</span>
 				<div className="survey__options">
 					{ITEM_COUNT_OPTIONS.map((option) => (
-						<label
-							key={option}
-							className={`survey__option ${itemCount === option ? "survey__option--checked" : ""}`}
-						>
+						<label key={option} className={`survey__option ${itemCount === option ? "survey__option--checked" : ""}`}>
 							<input
 								type="radio"
 								name="itemCount"
@@ -189,10 +169,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 				</span>
 				<div className="survey__options">
 					{FEEDBACK_INTEREST_OPTIONS.map((option) => (
-						<label
-							key={option}
-							className={`survey__option ${feedbackInterest === option ? "survey__option--checked" : ""}`}
-						>
+						<label key={option} className={`survey__option ${feedbackInterest === option ? "survey__option--checked" : ""}`}>
 							<input
 								type="radio"
 								name="feedbackInterest"
@@ -212,16 +189,9 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 					<span className="survey__q-num">5.</span>
 					Know someone who'd love this?
 				</span>
-				<p className="survey__rank-hint">
-					Founding Members are how we grow — be our hype person and put a
-					friend on the list.
-				</p>
+				<p className="survey__rank-hint">Founding Members are how we grow — be our hype person and put a friend on the list.</p>
 				<label className="waitlist__consent survey__referral-toggle">
-					<input
-						type="checkbox"
-						checked={hasReferrals}
-						onChange={(e) => toggleReferrals(e.target.checked)}
-					/>
+					<input type="checkbox" checked={hasReferrals} onChange={(e) => toggleReferrals(e.target.checked)} />
 					<span>Yes, I've got someone in mind</span>
 				</label>
 				{hasReferrals && (
@@ -232,9 +202,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 									type="email"
 									className="survey__referral-field"
 									value={referral.email}
-									onChange={(e) =>
-										updateReferral(index, "email", e.target.value)
-									}
+									onChange={(e) => updateReferral(index, "email", e.target.value)}
 									placeholder="Their email"
 									autoComplete="off"
 								/>
@@ -242,9 +210,7 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 									type="tel"
 									className="survey__referral-field"
 									value={referral.phone}
-									onChange={(e) =>
-										updateReferral(index, "phone", e.target.value)
-									}
+									onChange={(e) => updateReferral(index, "phone", e.target.value)}
 									placeholder="Their phone (optional)"
 									autoComplete="off"
 								/>
@@ -260,28 +226,16 @@ const Survey = ({ email, phone, onDone, onSkip }: SurveyProps) => {
 								)}
 							</div>
 						))}
-						<button
-							type="button"
-							className="survey__referral-add"
-							onClick={addReferral}
-						>
+						<button type="button" className="survey__referral-add" onClick={addReferral}>
 							+ Add another
 						</button>
 					</div>
 				)}
 			</div>
 
-			{submitError && (
-				<span className="waitlist__error waitlist__error--submit">
-					{submitError}
-				</span>
-			)}
+			{submitError && <span className="waitlist__error waitlist__error--submit">{submitError}</span>}
 
-			<button
-				type="submit"
-				className={`waitlist__submit ${loading ? "loading" : ""}`}
-				disabled={loading}
-			>
+			<button type="submit" className={`btn waitlist__submit ${loading ? "loading" : ""}`} disabled={loading}>
 				{loading ? "Submitting…" : "Submit Survey"}
 			</button>
 			<button type="button" className="survey__skip" onClick={onSkip}>
