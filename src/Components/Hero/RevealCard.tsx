@@ -18,7 +18,7 @@ const RevealCard = () => {
 	return (
 		<div className="reveal">
 			<p className="reveal__head">Your closet, imported.</p>
-			<p className="reveal__sub">Sixty seconds after you connect your inbox.</p>
+			<p className="reveal__sub">After you connect your inbox.</p>
 
 			<div className="reveal__figure">
 				<b>147</b>
