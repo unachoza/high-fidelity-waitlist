@@ -221,5 +221,6 @@
 	}
 	.garment-card__arrow {
 		transform: rotate(360deg);
+		top: 46%;
 	}
 }
