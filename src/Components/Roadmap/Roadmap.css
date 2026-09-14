@@ -1,0 +1,36 @@
+.roadmap__heading {
+	max-width: 22ch;
+}
+
+.roadmap__lede {
+	max-width: 54ch;
+}
+
+.roadmap__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 36px 56px;
+	margin-top: 48px;
+}
+
+.roadmap__item h3 {
+	margin-bottom: 10px;
+	color: var(--gold);
+}
+
+.roadmap__item p {
+	font-size: 15px;
+	line-height: 1.65;
+	color: rgba(250, 248, 245, 0.72);
+}
+
+/* Reads as a caveat, not a feature claim — the section promises direction,
+   and this is the line that says so out loud. */
+.roadmap__note {
+	margin-top: 44px;
+	padding-top: 22px;
+	border-top: 1px solid var(--rule-dark);
+	font-size: 13.5px;
+	font-style: italic;
+	color: rgba(250, 248, 245, 0.55);
+}

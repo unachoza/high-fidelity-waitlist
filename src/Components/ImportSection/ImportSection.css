@@ -1,0 +1,14 @@
+.import__lede-second {
+	margin-top: 18px;
+}
+
+/* Connecting an inbox is the biggest ask on the page — the reassurance sits
+   with the ask rather than buried in the privacy policy. */
+.import__trust {
+	margin-top: 22px;
+	padding-left: 14px;
+	border-left: 2px solid var(--gold-deep);
+	font-size: 13.5px;
+	line-height: 1.6;
+	color: var(--walnut);
+}

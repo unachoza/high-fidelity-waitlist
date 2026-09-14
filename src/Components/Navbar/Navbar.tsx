@@ -1,15 +1,17 @@
-import "./Navbar.css";
-
-import logoImg from "../../assets/Logo.png";
+import logoImg from "../../assets/logo-mark.png";
 
 import { useScrolled } from "../../hooks/useScrolled";
 
-const scrollToWaitlist = () => {
-	document.getElementById("waitlist-section")?.scrollIntoView({ behavior: "smooth" });
-};
+import "./Navbar.css";
 
-const navToBlog = () => {
-	window.location.href = "https://nothingtowear-waitlist.app/blog";
+const NAV_LINKS = [
+	{ id: "problem-section", label: "The Problem" },
+	{ id: "how-it-works", label: "Import" },
+	{ id: "care", label: "Care" },
+] as const;
+
+const scrollToId = (id: string) => {
+	document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 const Navbar = () => {
@@ -19,15 +21,25 @@ const Navbar = () => {
 		<nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
 			<div className="navbar__container">
 				<div className="navbar__brand">
-					<img src={logoImg} alt="Nothing To Wear" className="navbar__logo" />
-					<span className={`navbar__title ${scrolled ? "navbar__title--scrolled" : ""}`}>Nothing To Wear</span>
+					<img src={logoImg} alt="" className="navbar__logo" />
+					<span className="navbar__title">Nothing To Wear</span>
 				</div>
-				{/* <button className="navbar__cta" onClick={navToBlog}>
-					Blog
-				</button> */}
-				<button className="navbar__cta" onClick={scrollToWaitlist}>
-					Join Waitlist
-				</button>
+
+				<div className="navbar__right">
+					<ul className="navbar__links">
+						{NAV_LINKS.map(({ id, label }) => (
+							<li key={id}>
+								<button type="button" className="navbar__link" onClick={() => scrollToId(id)}>
+									{label}
+								</button>
+							</li>
+						))}
+					</ul>
+
+					<button type="button" className="btn navbar__cta" onClick={() => scrollToId("waitlist-section")}>
+						Join the waitlist
+					</button>
+				</div>
 			</div>
 		</nav>
 	);

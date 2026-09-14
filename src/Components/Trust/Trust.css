@@ -1,0 +1,24 @@
+.trust__heading {
+	max-width: 20ch;
+}
+
+.trust__lede {
+	max-width: 56ch;
+}
+
+.trust__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 34px 40px;
+	margin-top: 46px;
+}
+
+.trust__grid h3 {
+	margin-bottom: 7px;
+	font-size: 19px;
+}
+
+.trust__grid p {
+	font-size: 14.5px;
+	color: var(--walnut);
+}

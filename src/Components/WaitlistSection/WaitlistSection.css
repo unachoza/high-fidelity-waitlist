@@ -1,278 +1,198 @@
-.waitlist {
-	padding: 9rem 2rem;
-
-	background: var(--bg);
-
+.waitlist__block {
 	text-align: center;
 }
 
-.waitlist__container {
-	max-width: 630px;
-	margin: 0 auto;
+.waitlist__block h2 {
+	margin-bottom: 14px;
 }
 
-.waitlist__eyebrow {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 12px;
-
-	margin-bottom: 2rem;
-}
-
-.waitlist__line {
-	width: 24px;
-	height: 1px;
-
-	background: var(--gold);
-}
-
-.waitlist__eyebrow span {
-	text-transform: uppercase;
-	letter-spacing: 0.16em;
-	color: var(--gold);
-}
-
-.waitlist h2 {
-	font-family:
-		"Cormorant Garamond",
-		serif;
-
-	font-size: clamp(
-		3rem,
-		6vw,
-		5rem
-	);
-
-	font-weight: 300;
-
-	line-height: 1.1;
-
-	margin-bottom: 1.5rem;
-}
-
-.waitlist p {
-	line-height: 1.8;
-
-	color: var(--muted);
-
-	margin-bottom: 3rem;
+.waitlist__lede {
+	margin: 0 auto 32px;
+	text-align: center;
 }
 
 .waitlist__form {
-	max-width: 440px;
+	max-width: 470px;
 	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
 	text-align: left;
 }
 
-.waitlist__field {
+.waitlist__row {
 	display: flex;
-	flex-direction: column;
-	gap: 0.4rem;
+	gap: 10px;
+	flex-wrap: wrap;
 }
 
-.waitlist__field label {
-	font-weight: 500;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-	color: var(--muted);
-}
-
-.waitlist__field .optional {
-	font-style: italic;
-	font-weight: 400;
-	letter-spacing: 0.02em;
-	text-transform: none;
-	color: #b8a99b;
-}
-
-.waitlist__field input:not([type="checkbox"]) {
-	width: 100%;
-	padding: 0.85rem 1rem;
-	background: var(--stone);
-	border: 1px solid var(--border);
-	border-radius: 3px;
+.waitlist__row input {
+	flex: 1 1 240px;
+	min-width: 0;
+	padding: 15px 18px;
+	border: 1px solid rgba(250, 248, 245, 0.28);
+	border-radius: 2px;
+	background: transparent;
+	color: var(--ivory);
 	font-family: var(--sans);
-	font-size: 0.95rem;
-	color: var(--fg);
-	outline: none;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	font-size: 15px;
+	transition: border-color 0.18s ease;
 }
 
-.waitlist__field input:not([type="checkbox"]):focus {
-	border-color: var(--label);
-	box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+.waitlist__row input::placeholder {
+	color: rgba(250, 248, 245, 0.42);
 }
 
-.waitlist__field input.input-error {
-	border-color: #c0614a;
-	box-shadow: 0 0 0 3px rgba(192, 97, 74, 0.1);
+.waitlist__row input:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 1px;
 }
 
-.waitlist__error {
-	font-size: 12px;
-	color: #c0614a;
-	margin-top: 0.1rem;
+.waitlist__row input.is-invalid {
+	border-color: #e0a094;
 }
 
-.waitlist__error--submit {
-	text-align: center;
+/* ── optional phone ──────────────────────────────────── */
+
+.waitlist__phone-toggle {
+	display: inline-block;
+	margin-top: 14px;
+	padding: 4px 0;
+	border: none;
+	background: none;
+	color: rgba(250, 248, 245, 0.6);
+	font-family: var(--sans);
+	font-size: 13px;
+	cursor: pointer;
+	transition: color 0.18s ease;
 }
 
-/* ── Phone input group (country-code select + number input side by side) ── */
+.waitlist__phone-toggle:hover {
+	color: var(--gold);
+}
+
+.waitlist__phone {
+	margin-top: 16px;
+}
+
+.waitlist__phone label {
+	display: block;
+	margin-bottom: 7px;
+	font-size: 11px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: rgba(250, 248, 245, 0.62);
+}
+
+.waitlist__optional {
+	text-transform: none;
+	letter-spacing: 0.02em;
+	font-style: italic;
+	opacity: 0.75;
+}
 
 .waitlist__phone-group {
 	display: flex;
-	align-items: stretch;
-	background: var(--stone);
-	border: 1px solid var(--border);
-	border-radius: 3px;
-	overflow: hidden;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	gap: 8px;
 }
 
-.waitlist__phone-group:focus-within {
-	border-color: var(--label);
-	box-shadow: 0 0 0 3px rgba(178, 134, 117, 0.12);
+.waitlist__phone-group.is-invalid .waitlist__phone-code,
+.waitlist__phone-group.is-invalid .waitlist__phone-number {
+	border-color: #e0a094;
 }
 
-.waitlist__phone-group.input-error {
-	border-color: #c0614a;
-	box-shadow: 0 0 0 3px rgba(192, 97, 74, 0.1);
+.waitlist__phone-code,
+.waitlist__phone-number {
+	padding: 13px 14px;
+	border: 1px solid rgba(250, 248, 245, 0.28);
+	border-radius: 2px;
+	background: transparent;
+	color: var(--ivory);
+	font-family: var(--sans);
+	font-size: 15px;
 }
 
 .waitlist__phone-code {
-	flex: 0 0 auto;
-	padding: 0.85rem 0.6rem 0.85rem 0.9rem;
-	background: transparent;
-	border: none;
-	border-right: 1px solid var(--border);
-	font-family: var(--sans);
-	font-size: 0.95rem;
-	color: var(--fg);
-	outline: none;
-	cursor: pointer;
-	/* native arrow is fine — keeps it simple */
+	flex: none;
+	max-width: 8.5rem;
 }
 
-.waitlist__phone-code:focus {
-	outline: none;
+/* The native menu paints with the OS palette, so its options need a surface
+   that isn't the transparent dark field. */
+.waitlist__phone-code option {
+	background: var(--ivory);
+	color: var(--espresso);
 }
 
 .waitlist__phone-number {
 	flex: 1 1 auto;
 	min-width: 0;
-	padding: 0.85rem 1rem;
-	background: transparent;
-	border: none;
-	font-family: var(--sans);
-	font-size: 0.95rem;
-	color: var(--fg);
-	outline: none;
 }
 
-.waitlist__phone-number::placeholder {
-	color: var(--muted);
-	opacity: 0.6;
+.waitlist__phone-code:focus-visible,
+.waitlist__phone-number:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 1px;
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-
-.waitlist__field--consent {
-	gap: 0;
-}
+/* ── consent + errors ────────────────────────────────── */
 
 .waitlist__consent {
 	display: flex;
 	align-items: flex-start;
-	gap: 0.6rem;
+	gap: 9px;
+	margin-top: 18px;
+	font-size: 12.5px;
+	line-height: 1.55;
+	color: rgba(250, 248, 245, 0.6);
 	cursor: pointer;
-	font-size: 12px;
-	line-height: 1.6;
-	color: var(--muted);
 }
 
 .waitlist__consent input {
-	width: 16px;
-	height: 16px;
-	margin: 0.2rem 0 0;
-	flex: 0 0 16px;
-	accent-color: var(--dark);
-}
-
-.waitlist__consent input:hover {
+	margin-top: 2px;
+	accent-color: var(--gold);
 	cursor: pointer;
-}
-
-.waitlist__consent span {
-	flex: 1 1 auto;
 }
 
 .waitlist__consent a {
-	color: var(--label);
+	color: rgba(250, 248, 245, 0.88);
+	text-underline-offset: 2px;
 }
 
-.waitlist__submit {
-	margin-top: 0.25rem;
-	padding: 1rem;
-	border: none;
-	border-radius: 3px;
-	background: var(--dark);
-	color: var(--dark-fg);
-	font-family: var(--sans);
-	font-size: 11px;
-	font-weight: 500;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: background 0.2s, opacity 0.2s;
-}
-
-.waitlist__submit:hover {
-	background: var(--muted);
-}
-
-.waitlist__submit.loading {
-	opacity: 0.7;
-	cursor: progress;
-}
-
-.waitlist__note {
-	margin-top: 0.5rem;
-	font-size: 11px;
-	text-align: center;
-	color: var(--muted);
+.waitlist__error {
+	display: block;
+	margin-top: 9px;
+	font-size: 12.5px;
+	color: #e8a99c;
 }
 
 .waitlist__success {
-	padding: 2rem;
-
-	border: 1px solid
-		var(--gold);
-
-	background: rgba(
-		255,
-		255,
-		255,
-		0.03
-	);
+	text-align: left;
 }
 
-.waitlist__success h3 {
-	font-family:
-		"Cormorant Garamond",
-		serif;
-
-	font-size: 2rem;
-
-	margin-bottom: 0.5rem;
+.waitlist__success .waitlist__lede {
+	text-align: center;
 }
 
-@media (max-width: 768px) {
-	.waitlist__form {
-		max-width: 100%;
+/* ── survey surface ──────────────────────────────────────
+   The survey styles itself for a light background, but the waitlist section
+   is dark. Rather than fork every rule, it gets its own ivory panel. */
+
+.waitlist__success .survey {
+	margin-top: 2rem;
+	padding: 2.5rem clamp(20px, 4vw, 40px);
+	border: 1px solid var(--rule-dark);
+	border-radius: 4px;
+	background: var(--ivory);
+	color: var(--espresso);
+}
+
+@media (max-width: 560px) {
+	.waitlist__row {
+		flex-direction: column;
+	}
+
+	/* Same flex-basis-becomes-height trap as the hero form. */
+	.waitlist__row input,
+	.waitlist__form .btn {
+		flex: 0 0 auto;
+		width: 100%;
 	}
 }

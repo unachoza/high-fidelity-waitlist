@@ -1,0 +1,87 @@
+.garment-card {
+	padding: 24px 26px;
+	border: 1px solid var(--stone-deep);
+	border-radius: 3px;
+	background: #fff;
+}
+
+.garment-card__label {
+	margin-bottom: 8px;
+	font-size: 10.5px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--muted-ink);
+}
+
+.garment-card__receipt {
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--walnut);
+}
+
+.garment-card__arrow {
+	margin: 14px 0;
+	font-size: 20px;
+	line-height: 1;
+	text-align: center;
+	color: var(--gold-deep);
+}
+
+.garment-card__name {
+	margin-bottom: 14px;
+	font-family: var(--serif);
+	font-size: 19px;
+}
+
+.garment-card__bar {
+	display: flex;
+	height: 7px;
+	margin-bottom: 8px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.garment-card__bar i {
+	display: block;
+	height: 100%;
+}
+
+.garment-card__key {
+	display: flex;
+	gap: 16px;
+	margin: 0 0 18px;
+	padding: 0;
+	list-style: none;
+	font-size: 12px;
+	color: var(--walnut);
+}
+
+.garment-card__key i {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin-right: 6px;
+	border-radius: 50%;
+}
+
+.garment-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.garment-card__tag {
+	padding: 5px 11px;
+	border: 1px solid var(--stone-deep);
+	border-radius: 100px;
+	font-size: 12px;
+	color: var(--walnut);
+}
+
+.garment-card__tag--auto {
+	border-color: var(--gold-deep);
+	color: var(--gold-ink);
+}

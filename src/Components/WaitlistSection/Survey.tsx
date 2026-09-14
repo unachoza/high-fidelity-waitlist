@@ -11,6 +11,8 @@ import {
 	type Referral,
 } from "../../constants/survey";
 
+import "./Survey.css";
+
 const EMPTY_REFERRAL: Referral = { email: "", phone: "" };
 
 interface SurveyProps {

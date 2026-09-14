@@ -1,0 +1,181 @@
+/* ─────────────────────────────────────────────────────────
+   Section primitives shared across the landing page.
+   Mirrors the layout scale of the waitlist design artifact.
+───────────────────────────────────────────────────────── */
+
+.section {
+	padding: clamp(64px, 9vw, 120px) 24px;
+}
+
+.section--dark {
+	background: var(--espresso);
+	color: var(--ivory);
+}
+
+.section--lift {
+	background: var(--espresso-lift);
+	color: var(--ivory);
+}
+
+.section--stone {
+	background: var(--stone);
+}
+
+.section--light {
+	background: var(--ivory);
+}
+
+.inner {
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+.narrow {
+	max-width: 780px;
+	margin: 0 auto;
+}
+
+/* ── eyebrow ─────────────────────────────────────────── */
+
+.eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 26px;
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--gold);
+}
+
+.eyebrow::before {
+	content: "";
+	flex: none;
+	width: 34px;
+	height: 1px;
+	background: currentColor;
+}
+
+.section--stone .eyebrow,
+.section--light .eyebrow {
+	color: var(--gold-ink);
+}
+
+.eyebrow--centered {
+	justify-content: center;
+}
+
+/* ── lede ────────────────────────────────────────────── */
+
+.lede {
+	max-width: 46ch;
+	font-size: clamp(17px, 2vw, 19.5px);
+	font-weight: 300;
+	line-height: 1.55;
+	color: rgba(250, 248, 245, 0.74);
+}
+
+.section--stone .lede,
+.section--light .lede {
+	color: var(--walnut);
+}
+
+/* ── buttons ─────────────────────────────────────────── */
+
+.btn {
+	display: inline-block;
+	padding: 15px 34px;
+	border: 0;
+	border-radius: 2px;
+	background: var(--gold);
+	color: var(--espresso);
+	font-family: var(--sans);
+	font-size: 15px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.18s ease;
+}
+
+.btn:hover:not(:disabled) {
+	background: #d9b78d;
+}
+
+.btn:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 3px;
+}
+
+.btn:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+
+/* ── microcopy ───────────────────────────────────────── */
+
+.microcopy {
+	margin-top: 14px;
+	font-size: 12.5px;
+	letter-spacing: 0.04em;
+	color: rgba(250, 248, 245, 0.55);
+}
+
+.section--stone .microcopy,
+.section--light .microcopy {
+	color: var(--muted-ink);
+}
+
+/* ── stat row ────────────────────────────────────────── */
+
+.stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 28px;
+	margin-top: 40px;
+}
+
+.stat b {
+	display: block;
+	font-family: var(--serif);
+	font-size: 40px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.02em;
+	color: var(--gold);
+}
+
+.stat span {
+	display: block;
+	margin-top: 9px;
+	font-size: 11.5px;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: rgba(250, 248, 245, 0.55);
+}
+
+.section--stone .stat b,
+.section--light .stat b {
+	color: var(--gold-deep);
+}
+
+.section--stone .stat span,
+.section--light .stat span {
+	color: var(--walnut);
+}
+
+/* ── split layout ────────────────────────────────────── */
+
+.split {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: clamp(32px, 5.5vw, 76px);
+	align-items: center;
+}
+
+@media (max-width: 900px) {
+	.split {
+		grid-template-columns: 1fr;
+	}
+}
