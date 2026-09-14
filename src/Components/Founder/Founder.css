@@ -1,0 +1,15 @@
+.founder {
+	padding-top: 76px;
+	padding-bottom: 76px;
+}
+
+.founder__quote {
+	max-width: 34ch;
+	margin: 0 auto;
+	font-family: var(--serif);
+	font-style: italic;
+	font-size: clamp(19px, 2.4vw, 24px);
+	line-height: 1.5;
+	text-align: center;
+	color: var(--walnut);
+}

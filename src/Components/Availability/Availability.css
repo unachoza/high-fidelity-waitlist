@@ -1,0 +1,55 @@
+.availability__heading {
+	max-width: 18ch;
+}
+
+.availability__qa {
+	margin: 44px 0 0;
+}
+
+.availability__row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 20px;
+	align-items: baseline;
+	padding: 20px 0;
+	border-bottom: 1px solid var(--rule-dark);
+}
+
+/* The first row's top rule sits on the list, not the row, so the FadeIn
+   wrappers between them don't break the :first-child match. */
+.availability__qa > :first-child .availability__row {
+	border-top: 1px solid var(--rule-dark);
+}
+
+.availability__row dt {
+	font-family: var(--serif);
+	font-size: clamp(19px, 2.4vw, 24px);
+	font-weight: 400;
+}
+
+.availability__row dd {
+	margin: 0;
+	font-size: 15px;
+	letter-spacing: 0.01em;
+	color: var(--gold);
+}
+
+.availability__pillars {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 28px;
+	margin: 34px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 12px;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgba(250, 248, 245, 0.5);
+}
+
+@media (max-width: 640px) {
+	.availability__row {
+		grid-template-columns: 1fr;
+		gap: 4px;
+	}
+}

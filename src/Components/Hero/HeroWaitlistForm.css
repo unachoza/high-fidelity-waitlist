@@ -1,65 +1,116 @@
+/* Hero email capture — the artifact routes its hero CTA to the bottom form;
+   this captures inline instead, styled to the same button and field spec. */
+
 .hero-form {
-  max-width: 420px;
+	max-width: 470px;
+	margin-top: 34px;
 }
 
-.hero-cta {
-  display: inline-block;
-  padding: 14px 36px;
-  background: transparent;
-  border: 1px solid rgba(178, 134, 117, 0.55); /* terracotta */
-  border-radius: 2px;
-  color: var(--gold);
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+.hero-form__row {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
 }
 
-.hero-cta:hover {
-  background: rgba(178, 134, 117, 0.14);
-  border-color: var(--gold);
-  color: #d9b4a4; /* light terracotta on dark */
+.hero-form__row input {
+	flex: 1 1 240px;
+	min-width: 0;
+	padding: 15px 18px;
+	border: 1px solid rgba(250, 248, 245, 0.28);
+	border-radius: 2px;
+	background: transparent;
+	color: var(--ivory);
+	font-family: var(--sans);
+	font-size: 15px;
+	transition: border-color 0.18s ease;
 }
 
-.hero-form-row {
-  display: flex;
+.hero-form__row input::placeholder {
+	color: rgba(250, 248, 245, 0.42);
 }
 
-.hero-form input {
-  flex: 1;
-  padding: 14px 18px;
-  border: 1px solid rgba(255,255,255,.15);
-  background: rgba(255,255,255,.06);
-  color: inherit;
+.hero-form__row input:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 1px;
 }
 
-.hero-form button {
-  padding: 14px 20px;
-  border: none;
-  cursor: pointer;
+.hero-form__row input.is-invalid {
+	border-color: #e0a094;
 }
 
-.hero-form-caption {
-  margin-top: 10px;
-  font-size: 11px;
-  opacity: .6;
+.hero-form__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 9px;
+	margin-top: 16px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: rgba(250, 248, 245, 0.6);
+	cursor: pointer;
 }
 
-.hero-success {
-  padding: 1.5rem;
-  border: 1px solid currentColor;
-  max-width: 420px;
+.hero-form__consent input {
+	margin-top: 2px;
+	accent-color: var(--gold);
+	cursor: pointer;
 }
 
-.hero-success h3 {
-  margin-bottom: .5rem;
+.hero-form__consent a {
+	color: rgba(250, 248, 245, 0.88);
+	text-underline-offset: 2px;
 }
 
-@media (max-width: 640px) {
-  .hero-form-row {
-    flex-direction: column;
-  }
+.hero-form__error {
+	display: block;
+	margin-top: 9px;
+	font-size: 12.5px;
+	color: #e8a99c;
+}
+
+/* Post-signup state, so scrolling back up never re-asks. */
+.hero-signed-up {
+	max-width: 470px;
+	margin-top: 34px;
+	padding: 22px 26px;
+	border: 1px solid rgba(201, 164, 116, 0.42);
+	border-radius: 3px;
+	background: rgba(201, 164, 116, 0.09);
+}
+
+.hero-signed-up__title {
+	font-family: var(--serif);
+	font-size: 21px;
+	color: var(--gold);
+}
+
+.hero-signed-up__link {
+	margin-top: 8px;
+	padding: 0;
+	border: none;
+	background: none;
+	color: rgba(250, 248, 245, 0.72);
+	font-family: var(--sans);
+	font-size: 13.5px;
+	cursor: pointer;
+	transition: color 0.18s ease;
+}
+
+.hero-signed-up__link:hover {
+	color: var(--ivory);
+}
+
+/* Below the field's 240px flex-basis the row wraps, which would leave the
+   button at its natural width under a full-bleed input. Stack them instead. */
+@media (max-width: 560px) {
+	.hero-form__row {
+		flex-direction: column;
+	}
+
+	/* The row's main axis is now vertical, so the field's 240px flex-basis
+	   would become its HEIGHT. Let both children size to their content. */
+	.hero-form__row input,
+	.hero-form .btn {
+		flex: 0 0 auto;
+		width: 100%;
+	}
 }

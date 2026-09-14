@@ -1,0 +1,30 @@
+.closet-section__heading {
+	max-width: 20ch;
+}
+
+.closet-section__lede {
+	max-width: 54ch;
+}
+
+.closet-section__figure {
+	margin: 46px auto 0;
+	/* The source is 1068px wide; holding it near that keeps the card labels
+	   legible instead of stretching them soft across the full column. */
+	max-width: 860px;
+}
+
+.closet-section__figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	box-shadow: 0 30px 70px -44px rgba(35, 22, 18, 0.55);
+}
+
+.closet-section__figure figcaption {
+	margin-top: 16px;
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
+	color: var(--muted-ink);
+}

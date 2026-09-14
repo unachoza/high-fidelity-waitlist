@@ -1,41 +1,60 @@
-/* ─────────────────────────────────────
+/* ─────────────────────────────────────────────────────────
    Nothing To Wear — global foundation
-   Static palette (no runtime theming).
-   Sourced from the v1 design brief.
-───────────────────────────────────── */
+
+   Palette and type come from the waitlist design artifact.
+   A few contrast-corrected variants sit alongside the source
+   tokens; each one notes why it exists.
+───────────────────────────────────────────────────────── */
 
 :root {
-	/* core surfaces */
-	--bg: #faf8f5; /* alabaster — primary light surface */
-	--fg: #492f28; /* espresso — body/heading on light */
-	--dark: #231612; /* ink — dark sections */
-	--dark-fg: #faf8f5; /* alabaster on dark */
+	/* ── surfaces ── */
+	--espresso: #231612;
+	--espresso-lift: #2f1e19;
+	--ivory: #faf8f5;
+	--stone: #f3eee7;
+	--stone-deep: #e9e1d6;
 
-	/* accents */
-	--gold: #b28675; /* terracotta — primary accent */
-	--gold-hover: #9c7060; /* terracotta deep */
+	/* ── ink ── */
+	--walnut: #675647;
+	/* Small muted text on light surfaces. The artifact's #9c8878 is 3.2:1
+	   against --ivory, which fails AA at 12–14px; this reads 4.9:1. */
+	--muted-ink: #7d6a58;
 
-	/* secondary surfaces */
-	--stone: #f3eee7; /* sand */
-	--stone-mid: #ece4d9;
+	/* ── accents ── */
+	--gold: #c9a474;
+	--gold-deep: #a8834f;
+	/* Small uppercase labels on light surfaces: --gold-deep is 3.3:1, fine
+	   for the 40px stat numerals but not for 11px eyebrows. This is 4.6:1. */
+	--gold-ink: #8f6a3a;
+	--clay: #b28675;
+	--sage: #6e7a68;
 
-	/* borders */
-	--border: rgba(73, 47, 40, 0.14); /* espresso hairline */
-	--border-dark: rgba(255, 255, 255, 0.14);
+	/* ── type ── */
+	--serif: "Lora", Georgia, "Times New Roman", serif;
+	--sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-	/* text shades */
-	--muted: #8a7a72; /* warm taupe */
-	--label: #9c7060; /* terracotta deep — eyebrow labels */
-	--num-color: #c2b8a9; /* faint serif numerals on stone */
+	/* ── hairlines ── */
+	--rule-light: var(--stone-deep);
+	--rule-dark: rgba(250, 248, 245, 0.14);
 
-	--serif: "Lora", Georgia, serif;
-	--sans: "DM Sans", system-ui, -apple-system, sans-serif;
+	/* ── legacy aliases ──
+	   The post-signup survey predates this palette and styles itself from
+	   these names. Mapped here so it inherits the new look untouched. */
+	--bg: var(--ivory);
+	--fg: var(--espresso);
+	--dark: var(--espresso);
+	--dark-fg: var(--ivory);
+	--muted: var(--walnut);
+	--label: var(--gold-ink);
+	--border: var(--stone-deep);
+	--num-color: #c2b8a9;
+	--gold-hover: var(--gold-deep);
 
 	font-family: var(--sans);
-	font-size: 18px;
-	line-height: 1.45;
-	color: var(--fg);
-	background: var(--bg);
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--espresso);
+	background: var(--ivory);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -55,31 +74,60 @@ html {
 
 body {
 	margin: 0;
-	/* soft terracotta glow at the top-left, per the design mockups */
-	background:
-		radial-gradient(1100px 480px at 15% -5%, rgba(178, 134, 117, 0.12), transparent 60%),
-		var(--bg);
-	color: var(--fg);
+	background: var(--ivory);
+	color: var(--espresso);
 }
 
 h1,
 h2,
 h3 {
+	font-family: var(--serif);
 	font-weight: 500;
-	color: inherit;
-	margin: 0;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+}
+
+h1 {
+	margin: 0 0 26px;
+	font-size: clamp(44px, 7.4vw, 82px);
+	line-height: 1.02;
+	letter-spacing: -0.02em;
+}
+
+h2 {
+	margin: 0 0 20px;
+	font-size: clamp(30px, 4.4vw, 48px);
+	line-height: 1.08;
+}
+
+h3 {
+	margin: 0 0 10px;
+	font-size: 23px;
+	letter-spacing: -0.01em;
 }
 
 p {
-	margin: 0;
+	margin: 0 0 18px;
+}
+
+p:last-child {
+	margin-bottom: 0;
 }
 
 img {
 	max-width: 100%;
 }
 
-@media (max-width: 1024px) {
-	:root {
-		font-size: 16px;
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
 	}
 }

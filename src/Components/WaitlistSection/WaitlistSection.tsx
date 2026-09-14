@@ -3,163 +3,143 @@ import { useState } from "react";
 import FadeIn from "../FadeIn/FadeIn";
 import Survey from "./Survey";
 
-import { submitWaitlist } from "../../constants/waitlist";
-import { validateEmail, validatePhone } from "../../utils/validation";
+import { useWaitlist } from "../../hooks/useWaitlist";
 import { COUNTRY_CODES } from "../../constants/countryCodes";
 
 import "./WaitlistSection.css";
 
-type Stage = "form" | "success" | "survey-done";
-
 const WaitlistSection = () => {
-	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState("");
-	const [countryCode, setCountryCode] = useState("+1");
-	const [consent, setConsent] = useState(false);
-	const [emailError, setEmailError] = useState<string | null>(null);
-	const [phoneError, setPhoneError] = useState<string | null>(null);
-	const [consentError, setConsentError] = useState<string | null>(null);
-	const [submitError, setSubmitError] = useState<string | null>(null);
-	const [loading, setLoading] = useState(false);
-	const [stage, setStage] = useState<Stage>("form");
+	const {
+		email,
+		phone,
+		countryCode,
+		consent,
+		errors,
+		loading,
+		stage,
+		setEmail,
+		setPhone,
+		setCountryCode,
+		setConsent,
+		setStage,
+		submit,
+	} = useWaitlist();
+
+	// Phone is optional — keep it out of the required path until asked for.
+	const [showPhone, setShowPhone] = useState(false);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-
-		const eErr = validateEmail(email.trim());
-		const pErr = validatePhone(phone.trim());
-		const cErr = consent ? null : "Please agree to the Privacy Policy to continue.";
-		setEmailError(eErr);
-		setPhoneError(pErr);
-		setConsentError(cErr);
-		if (eErr || pErr || cErr) return;
-
-		setSubmitError(null);
-		setLoading(true);
-
-		// Combine country code + local number for storage (e.g. "+34 683 19 73 08")
-		const fullPhone = phone.trim() ? `${countryCode} ${phone.trim()}` : "";
-
-		try {
-			await submitWaitlist(email.trim(), fullPhone);
-			setStage("success");
-		} catch {
-			setSubmitError("Something went wrong. Please check your connection and try again.");
-		} finally {
-			setLoading(false);
-		}
+		await submit();
 	};
 
 	return (
-		<section id="waitlist-section" className="waitlist">
-			<FadeIn>
-				<div className="waitlist__container">
-					<div className="waitlist__eyebrow">
-						<div className="waitlist__line" />
-						<span>Early Access</span>
-						<div className="waitlist__line" />
-					</div>
+		<section id="waitlist-section" className="section section--dark waitlist">
+			<div className="narrow waitlist__block">
+				<FadeIn>
+					<div className="eyebrow eyebrow--centered">Early access</div>
 
-					<h2>
-						See your wardrobe
-						<br />
-						<em>clearly.</em>
-					</h2>
+					<h2>See your wardrobe clearly.</h2>
 
 					{stage === "form" && (
 						<>
-							<p>Join the waitlist for early access to Nothing To Wear.</p>
+							<p className="lede waitlist__lede">
+								Founding members get in first, and help shape what gets built next.
+							</p>
 
 							<form className="waitlist__form" onSubmit={handleSubmit} noValidate>
-								<div className="waitlist__field">
-									<label htmlFor="waitlist-email">Email</label>
+								<div className="waitlist__row">
 									<input
 										id="waitlist-email"
 										type="email"
 										value={email}
-										onChange={(e) => {
-											setEmail(e.target.value);
-											if (emailError) setEmailError(null);
-										}}
-										placeholder="your@email.com"
+										onChange={(e) => setEmail(e.target.value)}
+										placeholder="you@example.com"
 										autoComplete="email"
-										className={emailError ? "input-error" : ""}
+										aria-label="Email address"
+										aria-invalid={errors.email ? true : undefined}
+										className={errors.email ? "is-invalid" : ""}
 									/>
-									{emailError && <span className="waitlist__error">{emailError}</span>}
+									<button type="submit" className="btn" disabled={loading}>
+										{loading ? "Reserving…" : "Reserve my spot"}
+									</button>
 								</div>
 
-								<div className="waitlist__field">
-									<label htmlFor="waitlist-phone">
-										Phone <span className="optional">optional</span>
-									</label>
-									<div className={`waitlist__phone-group ${phoneError ? "input-error" : ""}`}>
-										<select
-											aria-label="Country code"
-											value={countryCode}
-											onChange={(e) => setCountryCode(e.target.value)}
-											className="waitlist__phone-code"
-										>
-											{COUNTRY_CODES.map(({ code, country, flag }) => (
-												<option key={`${code}-${country}`} value={code}>
-													{flag} {code}
-												</option>
-											))}
-										</select>
-										<input
-											id="waitlist-phone"
-											type="tel"
-											value={phone}
-											onChange={(e) => {
-												setPhone(e.target.value);
-												if (phoneError) setPhoneError(null);
-											}}
-											placeholder="555 000 1234"
-											autoComplete="tel-national"
-											className="waitlist__phone-number"
-										/>
+								{errors.email && <span className="waitlist__error">{errors.email}</span>}
+
+								{showPhone ? (
+									<div className="waitlist__phone">
+										<label htmlFor="waitlist-phone">
+											Phone <span className="waitlist__optional">optional</span>
+										</label>
+										<div className={`waitlist__phone-group ${errors.phone ? "is-invalid" : ""}`}>
+											<select
+												aria-label="Country code"
+												value={countryCode}
+												onChange={(e) => setCountryCode(e.target.value)}
+												className="waitlist__phone-code"
+											>
+												{COUNTRY_CODES.map(({ code, country, flag }) => (
+													<option key={`${code}-${country}`} value={code}>
+														{flag} {code}
+													</option>
+												))}
+											</select>
+											<input
+												id="waitlist-phone"
+												type="tel"
+												value={phone}
+												onChange={(e) => setPhone(e.target.value)}
+												placeholder="555 000 1234"
+												autoComplete="tel-national"
+												className="waitlist__phone-number"
+											/>
+										</div>
+										{errors.phone && <span className="waitlist__error">{errors.phone}</span>}
 									</div>
-									{phoneError && <span className="waitlist__error">{phoneError}</span>}
-								</div>
+								) : (
+									<button
+										type="button"
+										className="waitlist__phone-toggle"
+										onClick={() => setShowPhone(true)}
+									>
+										+ Add a phone number (optional)
+									</button>
+								)}
 
-								<div className="waitlist__field waitlist__field--consent">
-									<label className="waitlist__consent">
-										<input
-											type="checkbox"
-											checked={consent}
-											onChange={(e) => {
-												setConsent(e.target.checked);
-												if (consentError) setConsentError(null);
-											}}
-										/>
-										<span>
-											I agree to the{" "}
-											<a href="#privacy" target="_blank" rel="noopener noreferrer">
-												Privacy Policy
-											</a>{" "}
-											and consent to my email (and phone, if provided) being collected for
-											waitlist communications.
-										</span>
-									</label>
-									{consentError && <span className="waitlist__error">{consentError}</span>}
-								</div>
+								<label className="waitlist__consent">
+									<input
+										type="checkbox"
+										checked={consent}
+										onChange={(e) => setConsent(e.target.checked)}
+										aria-label="I agree to the Privacy Policy"
+									/>
+									<span>
+										I agree to the{" "}
+										<a href="#privacy" target="_blank" rel="noopener noreferrer">
+											Privacy Policy
+										</a>{" "}
+										and consent to my email (and phone, if provided) being collected for waitlist
+										communications.
+									</span>
+								</label>
 
-								<button type="submit" className={`waitlist__submit ${loading ? "loading" : ""}`} disabled={loading}>
-									{loading ? "Reserving…" : "Reserve My Spot"}
-								</button>
+								{errors.consent && <span className="waitlist__error">{errors.consent}</span>}
+								{errors.submit && <span className="waitlist__error">{errors.submit}</span>}
 
-								{submitError && <span className="waitlist__error waitlist__error--submit">{submitError}</span>}
-
-								<p className="waitlist__note">No spam. Unsubscribe anytime.</p>
+								<p className="microcopy">
+									No spam. Unsubscribe anytime. After you join, 3 quick questions help shape what we
+									build first.
+								</p>
 							</form>
 						</>
 					)}
 
 					{stage === "success" && (
 						<div className="waitlist__success">
-							<h3>You're on the list.</h3>
-							<p>
-								Congrats on joining the waitlist for Nothing To Wear. You'll be emailed as soon as we're ready for
-								you.
+							<p className="lede waitlist__lede">
+								You are on the list. We will email you the moment the doors open — and the three
+								questions below decide what gets built first.
 							</p>
 
 							<Survey
@@ -172,13 +152,12 @@ const WaitlistSection = () => {
 					)}
 
 					{stage === "survey-done" && (
-						<div className="waitlist__success">
-							<h3>You're on the list.</h3>
-							<p>Thank you — we'll be in touch as soon as early access opens.</p>
-						</div>
+						<p className="lede waitlist__lede">
+							Thank you — we will be in touch as soon as early access opens.
+						</p>
 					)}
-				</div>
-			</FadeIn>
+				</FadeIn>
+			</div>
 		</section>
 	);
 };

@@ -1,0 +1,127 @@
+/* Styled as a plain order-confirmation email rather than a copy of any
+   retailer's template: system-ish type, hairline rules, no brand chrome. */
+
+.receipt {
+	padding: 18px 20px 20px;
+	border: 1px solid var(--stone-deep);
+	border-radius: 3px;
+	background: var(--ivory);
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--walnut);
+}
+
+.receipt__brand {
+	padding-bottom: 12px;
+	border-bottom: 1px solid var(--stone-deep);
+	font-family: var(--serif);
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-align: center;
+	color: var(--espresso);
+}
+
+.receipt__greeting {
+	margin: 14px 0 8px;
+	font-size: 13px;
+	color: var(--espresso);
+}
+
+.receipt__body {
+	margin: 0 0 16px;
+}
+
+/* ── meta columns ────────────────────────────────────── */
+
+.receipt__meta {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+	margin: 0 0 16px;
+	padding: 14px 0;
+	border-top: 1px solid var(--stone-deep);
+	border-bottom: 1px solid var(--stone-deep);
+	font-size: 11.5px;
+}
+
+.receipt__meta dt {
+	margin-bottom: 4px;
+	font-weight: 600;
+	color: var(--espresso);
+}
+
+.receipt__meta dd {
+	margin: 0;
+}
+
+.receipt__meta dd span {
+	display: block;
+}
+
+/* ── line item ───────────────────────────────────────── */
+
+.receipt__item {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	padding-bottom: 14px;
+	border-bottom: 1px solid var(--stone-deep);
+}
+
+.receipt__item-name {
+	color: var(--espresso);
+}
+
+.receipt__item-name span {
+	display: block;
+	margin-top: 3px;
+	color: var(--muted-ink);
+}
+
+.receipt__item-price {
+	flex: none;
+	font-variant-numeric: tabular-nums;
+	color: var(--espresso);
+}
+
+/* ── totals ──────────────────────────────────────────── */
+
+.receipt__totals {
+	margin: 12px 0 0;
+	margin-left: auto;
+	max-width: 210px;
+	font-size: 12px;
+}
+
+.receipt__totals > div {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 2px 0;
+}
+
+.receipt__totals dt {
+	color: var(--walnut);
+}
+
+.receipt__totals dd {
+	margin: 0;
+	font-variant-numeric: tabular-nums;
+}
+
+.receipt__totals-final {
+	margin-top: 5px;
+	padding-top: 6px !important;
+	border-top: 1px solid var(--stone-deep);
+	font-weight: 600;
+	color: var(--espresso);
+}
+
+@media (max-width: 560px) {
+	.receipt__meta {
+		grid-template-columns: 1fr 1fr;
+	}
+}
