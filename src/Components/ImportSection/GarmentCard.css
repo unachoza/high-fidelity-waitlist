@@ -2,6 +2,7 @@
 	/* Fills the column so both halves of the split end level; the content
 	   centres inside whatever height the taller column sets. */
 	height: 100%;
+	position: relative; /* containing block for the flow arrow */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -21,14 +22,13 @@
 }
 
 .garment-card__arrow {
-	margin: 16px 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(270deg);
 	font-size: 20px;
 	line-height: 1;
-	text-align: center;
 	color: var(--gold-deep);
-	position: absolute;
-    	transform: rotate(270deg);
-    	left: 50%;
 }
 
 /* ── the derived garment ─────────────────────────────── */
@@ -39,14 +39,12 @@
 	gap: 24px;
 	align-items: start;
 	margin-top: 5px;
-	height: 92%;
 }
 
 .garment-card__info {
 	display: flex;
 	flex-direction: column;
 	gap: 18px;
-	width: 120%;
 }
 
 /* ── attribute groups ────────────────────────────────── */
@@ -139,8 +137,8 @@
 
 .garment-card__photo {
 	display: block;
-	width: auto;
-	height: 100%;
+	width: 100%;
+	height: auto;
 	border-radius: 4px;
 	border: 1px solid var(--stone-deep);
 }
@@ -222,5 +220,26 @@
 	.garment-card__arrow {
 		transform: rotate(360deg);
 		top: 46%;
+	}
+}
+
+
+/* ── desktop proportions ─────────────────────────────────
+   Deliberately scoped: giving the result a fixed height and the photo
+   height:100% lets the photo outgrow its row when the details block measures
+   shorter than expected (iOS text metrics do exactly that), which paints the
+   photo over the details. Confine it to the width where it was tuned. */
+@media (min-width: 1081px) {
+	.garment-card__result {
+		height: 92%;
+	}
+
+	.garment-card__info {
+		width: 120%;
+	}
+
+	.garment-card__photo {
+		width: auto;
+		height: 100%;
 	}
 }
