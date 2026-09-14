@@ -171,7 +171,15 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	gap: clamp(32px, 5.5vw, 76px);
-	align-items: center;
+	/* Both columns run the full height of the taller one; each column's own
+	   content decides how it sits inside that height. */
+	align-items: stretch;
+}
+
+.split > * {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 @media (max-width: 900px) {
