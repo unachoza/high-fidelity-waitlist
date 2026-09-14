@@ -12,7 +12,8 @@ const STATS = [
 const ImportSection = () => {
 	return (
 		<section id="how-it-works" className="section section--stone">
-			<div className="inner split">
+
+			{/* <div className="inner split"> */}
 				<FadeIn>
 					<div>
 						<div className="eyebrow">Step one</div>
@@ -48,7 +49,7 @@ const ImportSection = () => {
 				<FadeIn delay={120}>
 					<GarmentCard />
 				</FadeIn>
-			</div>
+			{/* </div> */}
 		</section>
 	);
 };

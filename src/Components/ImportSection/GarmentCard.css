@@ -25,6 +25,9 @@
 	line-height: 1;
 	text-align: center;
 	color: var(--gold-deep);
+	position: absolute;
+    	transform: rotate(270deg);
+    	left: 50%;
 }
 
 /* ── the derived garment ─────────────────────────────── */

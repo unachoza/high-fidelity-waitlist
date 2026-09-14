@@ -44,83 +44,87 @@ const CARE_TAGS = ["Cold wash", "No heat", "Wash with like colours"] as const;
 const GarmentCard = () => {
 	return (
 		<div className="garment-card">
-			<div className="garment-card__receipt">
-				<p className="garment-card__label">From your inbox</p>
-				<ReceiptCard />
+			<div className="inner split">
+				<div className="garment-card__receipt">
+					<p className="garment-card__label">From your inbox</p>
+					<ReceiptCard />
+				</div>
+				
+				<div>
+					<p className="garment-card__label">In your closet, automatically</p>
+
+					<div className="garment-card__result">
+						<img
+							className="garment-card__photo"
+							src={dressCard}
+							alt="The closet card for the Aritzia Contour Squareneck Dress in teal, marked In Closet."
+							width={560}
+							height={764}
+							loading="lazy"
+							decoding="async"
+						/>
+
+						<div className="garment-card__info">
+							<div className="garment-card__details">
+								{DETAIL_GROUPS.map(({ label, pills, rows }) => (
+									<section key={label} className="garment-card__group">
+										<h4>{label}</h4>
+
+										{pills && (
+											<ul className="garment-card__pills">
+												{pills.map((pill) => (
+													<li key={pill}>{pill}</li>
+												))}
+											</ul>
+										)}
+
+										{rows && (
+											<dl className="garment-card__rows">
+												{rows.map(([key, value]) => (
+													<div key={key}>
+														<dt>{key}:</dt>
+														<dd>{value}</dd>
+													</div>
+												))}
+											</dl>
+										)}
+									</section>
+								))}
+							</div>
+
+							<div className="garment-card__derived">
+								<h4>Fabric &amp; Care</h4>
+
+								<div className="garment-card__bar">
+									{COMPOSITION.map(({ fibre, percent, colour }) => (
+										<i key={fibre} style={{ width: `${percent}%`, background: colour }} />
+									))}
+								</div>
+
+								<ul className="garment-card__key">
+									{COMPOSITION.map(({ fibre, percent, colour }) => (
+										<li key={fibre}>
+											<i style={{ background: colour }} />
+											{percent}% {fibre}
+										</li>
+									))}
+								</ul>
+
+								<ul className="garment-card__tags">
+									{CARE_TAGS.map((tag) => (
+										<li key={tag} className="garment-card__tag garment-card__tag--auto">
+											{tag}
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div className="garment-card__arrow" aria-hidden="true">
 				↓
-			</div>
-
-			<p className="garment-card__label">In your closet, automatically</p>
-
-			<div className="garment-card__result">
-				<img
-					className="garment-card__photo"
-					src={dressCard}
-					alt="The closet card for the Aritzia Contour Squareneck Dress in teal, marked In Closet."
-					width={560}
-					height={764}
-					loading="lazy"
-					decoding="async"
-				/>
-
-				<div className="garment-card__info">
-					<div className="garment-card__details">
-						{DETAIL_GROUPS.map(({ label, pills, rows }) => (
-							<section key={label} className="garment-card__group">
-								<h4>{label}</h4>
-
-								{pills && (
-									<ul className="garment-card__pills">
-										{pills.map((pill) => (
-											<li key={pill}>{pill}</li>
-										))}
-									</ul>
-								)}
-
-								{rows && (
-									<dl className="garment-card__rows">
-										{rows.map(([key, value]) => (
-											<div key={key}>
-												<dt>{key}:</dt>
-												<dd>{value}</dd>
-											</div>
-										))}
-									</dl>
-								)}
-							</section>
-						))}
-					</div>
-
-					<div className="garment-card__derived">
-						<h4>Fabric &amp; Care</h4>
-
-						<div className="garment-card__bar">
-							{COMPOSITION.map(({ fibre, percent, colour }) => (
-								<i key={fibre} style={{ width: `${percent}%`, background: colour }} />
-							))}
-						</div>
-
-						<ul className="garment-card__key">
-							{COMPOSITION.map(({ fibre, percent, colour }) => (
-								<li key={fibre}>
-									<i style={{ background: colour }} />
-									{percent}% {fibre}
-								</li>
-							))}
-						</ul>
-
-						<ul className="garment-card__tags">
-							{CARE_TAGS.map((tag) => (
-								<li key={tag} className="garment-card__tag garment-card__tag--auto">
-									{tag}
-								</li>
-							))}
-						</ul>
-					</div>
-				</div>
 			</div>
 		</div>
 	);
