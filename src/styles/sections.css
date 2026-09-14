@@ -179,7 +179,7 @@
 .split > * {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 }
 
 @media (max-width: 900px) {
